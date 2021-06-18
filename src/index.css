@@ -1,0 +1,48 @@
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-family: "Nunito", sans-serif;
+    line-height: 1.6;
+    background: #ffffff;
+    overflow-x: hidden;
+    font-size: 16px;
+    color: #939393;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+.PrivateValueLabel-circle-35 {
+  width: 25px !important;
+  height: 25px !important;
+  display: flex !important;
+  transform: rotate(
+-45deg
+);
+  align-items: center;
+  border-radius: 50% 100% 50% 0 !important;
+  justify-content: center;
+  background-color: currentColor;
+}
+
+.PrivateValueLabel-offset-34{
+  top: -20px !important;
+    z-index: 1;
+    position: absolute;
+    font-size: 0.75rem;
+    transform: scale(0);
+    transition: transform 150ms cubic-bezier(0.4, 0, 0.2, 1) 0ms;
+    font-family: "Roboto", "Helvetica", "Arial", sans-serif;
+    font-weight: 400;
+    line-height: 1.2;
+    letter-spacing: 0.01071em;
+    transform-origin: bottom center;
+}
+.MuiSlider-valueLabel {
+  left: calc(-26% - 4px) !important;
+}

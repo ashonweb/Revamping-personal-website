@@ -63,14 +63,13 @@ const LogoLinksComponent = (props) => {
            
           <NavHashLink to='#Home' style={{color:(scroll<400)?"white":'black'}} activeClassName={(isSticky === true && scroll <400)? classes.activefixed : classes.active} className={isSticky === true ? classes.linksfixed : classes.links}>Home</NavHashLink>
           <NavHashLink style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<1600)?'#96bb7c':'black'}} to='#AboutMe'  activeClassName={(isSticky === true) ? classes.activefixed : classes.active} className={(isSticky === true)? classes.linksfixed : classes.links}>About Me</NavHashLink>
-          <NavHashLink to='#Projects' style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<1600)?'black': (scroll<2630)?'#96bb7c':'black'}} activeClassName={isSticky === true ? classes.activefixed : classes.active} className={isSticky === true ? classes.linksfixed : classes.links}>Projects</NavHashLink>
-          <NavHashLink to='#Resume' style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<2630)?'black':'#96bb7c'}} activeClassName={isSticky === true ? classes.activefixed : classes.active} className={isSticky === true ? classes.linksfixed : classes.links}>Resume</NavHashLink>
-          <NavHashLink to='#ContactMe' activeClassName={isSticky === true ? classes.activefixed : classes.active} className={isSticky === true ? classes.linksfixed : classes.links}>Contact Me</NavHashLink>
+          <NavHashLink to='#Projects' style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<1600)?'black': (scroll<2625)?'#96bb7c':'black'}} activeClassName={isSticky === true ? classes.activefixed : classes.active} className={isSticky === true ? classes.linksfixed : classes.links}>Projects</NavHashLink>
+          <NavHashLink to='#Resume' style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<2625)?'black':(scroll<3320)?'#96bb7c':'black'}} activeClassName={isSticky === true ? classes.activefixed : classes.active} className={isSticky === true ? classes.linksfixed : classes.links}>Resume</NavHashLink>
+          <NavHashLink to='#ContactMe' style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<3320)?'black':'#96bb7c'}} activeClassName={isSticky === true ? classes.activefixed : classes.active} className={isSticky === true ? classes.linksfixed : classes.links}>Contact Me</NavHashLink>
           
           </div>
-          <div className={classes.mobile}>
-            <IconButton onClick={() => handleOpendrawer(!open)} className={classes.iconbutton}
-              color="inherit"
+          <div className={classes.mobile}  >
+            <IconButton onClick={() => handleOpendrawer(!open)} className={isSticky === true ? classes.iconbutton_color : classes.iconbutton} 
               aria-label="open drawer"
               edge="end"
 

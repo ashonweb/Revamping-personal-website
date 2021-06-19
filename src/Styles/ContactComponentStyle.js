@@ -16,7 +16,25 @@ const style = theme => ({
     fontWeight:400,
     fontSize: '3rem',
     margin:'30px 0 10px 0',
-    textAlign:'center'
+    textAlign:'center',
+    [theme.breakpoints.down('sm')]: {
+      textAlign:'left'
+    },
+  },
+  info:{
+    color:'black',
+    fontFamily: 'Nunito,sans-serif',
+    fontWeight:400,
+    fontSize: '2rem',
+    margin:'30px 0 10px 0',
+  },
+  location:{
+    display:'flex',
+    color:'black',
+    fontFamily: 'Nunito,sans-serif',
+    fontWeight:400,
+    fontSize: '1rem',
+    margin:'30px 0 10px 0',
   },
   contentcontainer:{
     
@@ -24,6 +42,10 @@ const style = theme => ({
     [theme.breakpoints.down('sm')]: {
       display:'block'
     }},
+
+    footer:{
+background: "#efefef",
+    },
     row:{
       margin:"15px 0",
       display:'flex',
@@ -114,7 +136,12 @@ const style = theme => ({
     fontSize: "11px",
     textTransform: "uppercase",
     fontWeight: 700,
-    letterSpacing: ".05rem"
+    letterSpacing: ".05rem",
+    '&:hover':{
+      color:'white !important',
+    background: "#96bb7c !important",
+    }
+   
   }
 
     

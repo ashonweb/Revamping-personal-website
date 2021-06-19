@@ -16,7 +16,10 @@ const style = theme => ({
     fontWeight:400,
     fontSize: '3rem',
     margin:'30px 0 10px 0',
-    textAlign:'center'
+    textAlign:'center',
+    [theme.breakpoints.down('sm')]: {
+      textAlign:'left'
+    },
   },
   projects:{
     display:'flex'

@@ -4,7 +4,11 @@ const style = theme => ({
   container: {
     backgroundImage: `url(${image})`,
     minHeight: "100vh",
-    filter: "blur(4px)"
+    filter: "blur(4px)",
+    backgroundAttachment: "fixed",
+  backgroundPosition: "center",
+  backgroundRepeat: "no-repeat",
+  backgroundSize: "cover",
   },
   maincontentstartshere: {
     position: "absolute",

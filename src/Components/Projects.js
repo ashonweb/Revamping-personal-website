@@ -22,7 +22,7 @@ const Projects = (props) => {
           <ul id="hexGrid">
             <li class="hex">
               <div class="hexIn">
-                <a class="hexLink" href="#">
+                <a class="hexLink" rel="noreferrer" href="http://ice-n-fire.surge.sh/" target='_blank'>
                   <div class='img' style={{ backgroundImage: `url(${got})`, }}></div>
                   <h1 id="demo1">Game of Thrones</h1>
                   <p id="demo4">Gives the overview of Game of Thrones Books/Series</p>
@@ -35,7 +35,7 @@ const Projects = (props) => {
             </li>
             <li class="hex">
               <div class="hexIn">
-                <a class="hexLink" href="#">
+                <a class="hexLink"  rel="noreferrer" href="http://spacex_bmeghpal.surge.sh/#/" target='_blank'>
                   <div class='img' style={{ backgroundImage: `url(${spacex})`, }}></div>
                   <h1 id="demo1">Space X</h1>
                   <p id="demo4">Gives the list of all launches by SpaceX Program</p>
@@ -50,7 +50,7 @@ const Projects = (props) => {
 
             <li class="hex">
               <div class="hexIn">
-                <a class="hexLink" href="#">
+                <a class="hexLink" rel="noreferrer" href="http://ice-n-fire.surge.sh/" target='_blank'>
                   <div class='img' style={{ backgroundImage: `url(${falcon})`, }}></div>
                   <h1 id="demo1">Finding Falcon</h1>
                   <p id="demo4">Game to search Queen Falcone who is hiding in different planet</p>
@@ -62,7 +62,7 @@ const Projects = (props) => {
             </li>
             <li class="hex">
               <div class="hexIn">
-                <a class="hexLink" href="#">
+                <a class="hexLink" rel="noreferrer" href="http://hacker-news-alt.surge.sh/#/" target='_blank'>
                   <div class='img' style={{ backgroundImage: `url(${hacknews})`, }}></div>
                   <h1 id="demo1">Hacker News</h1>
                   <p id="demo4">Replica of Hacker News Application </p>
@@ -74,7 +74,7 @@ const Projects = (props) => {
             </li>
             <li class="hex">
               <div class="hexIn">
-                <a class="hexLink" href="#">
+                <a class="hexLink" rel="noreferrer" href="https://wiki-bmeghpal-viwer.surge.sh/" target='_blank'>
                   <div class='img' style={{ backgroundImage: `url(${wiki})`, }}></div>
                   <h1 id="demo1">Wikipedia Search</h1>
                   <p id="demo4">A wikipedia search engine which produceed the first 10 results based on search </p>
@@ -86,7 +86,7 @@ const Projects = (props) => {
             </li>
             <li class="hex">
               <div class="hexIn">
-                <a class="hexLink" href="#">
+                <a class="hexLink" rel="noreferrer" href="https://drummachineapp_bmeghpal.surge.sh/" target='_blank'>
                   <div class='img' style={{ backgroundImage: `url(${drums})`, }}></div>
                   <h1 id="demo1">Drums Machine</h1>
                   <p id="demo4">An audio application which initiates different sounds on key inputs </p>
@@ -98,7 +98,7 @@ const Projects = (props) => {
             </li>
             <li class="hex">
               <div class="hexIn">
-                <a class="hexLink" href="#">
+                <a class="hexLink" rel="noreferrer" href="https://diamond-game.surge.sh/" target='_blank'>
                   <div class='img' style={{ backgroundImage: `url(${diamond})`, }}></div>
                   <h1 id="demo1">Diamond Search </h1>
                   <p id="demo4">Game application for searching diamonds in 8 by 8 grid. </p>
@@ -108,7 +108,7 @@ const Projects = (props) => {
             </li>
             <li class="hex">
               <div class="hexIn">
-                <a class="hexLink" href="#">
+                <a class="hexLink" rel="noreferrer" href="https://bmeghpal-face-detect.surge.sh/#/" target='_blank'>
                   <div class='img' style={{ backgroundImage: `url(${face})`, }}></div>
                   <h1 id="demo1">Face detection </h1>
                   <p id="demo4">Retrieve infomation about the face via upload/url</p>
@@ -120,7 +120,7 @@ const Projects = (props) => {
             </li>
             <li class="hex">
               <div class="hexIn">
-                <a class="hexLink" href="#">
+                <a class="hexLink" rel="noreferrer" href="https://calculator-bmeghpal.surge.sh/" target='_blank'>
                   <div class='img' style={{ backgroundImage: `url(${calc})`, }}></div>
                   <h1 id="demo1">Calculator</h1>
                   <p id="demo4">Calculator which does basic arthimatic operations</p>

@@ -18,7 +18,7 @@ const HomeComponent = (props) => {
 
       <div className={classes.authorname}>
         <Typography variant='h1' className={classes.name}>I'am Bhagyashree Meghpal</Typography>
-        <Typography variant='h4' className={classes.role}>A Front-end Developer</Typography>
+        <Typography variant='h4' className={classes.role}>Front-end Developer</Typography>
       </div>
 
 

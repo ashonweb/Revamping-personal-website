@@ -14,20 +14,31 @@ const style = theme => ({
     zIndex: 1,
     color: "white",
     display: 'flex',
-    width: '100%'
+    width: '100%',
+    padding:'0 30px',
+    [theme.breakpoints.down('sm')]: {
+      padding:'0px'
+    }
   },
   logosection: {
     flexBasis: '25%',
     display: "inherit",
-    justifyContent: "center",
-    alignItems: 'center'
+    // justifyContent: "center",
+    alignItems: 'center',
+    [theme.breakpoints.down('sm')]: {
+      padding:'0px 10px'
+    }
 
   },
   linksection: {
     display: "inherit",
     justifyContent: "center",
     alignItems: 'center',
-    flexBasis: '75%'
+    flexBasis: '75%',
+    [theme.breakpoints.down('sm')]: {
+      justifyContent: "flex-end",
+      padding:'0px 10px',
+    }
   },
   logo: {
     textAlign: 'center',
@@ -51,6 +62,7 @@ const style = theme => ({
     textDecoration: 'none'
 
   },
+  
   desktop: {
     display: 'block',
     [theme.breakpoints.down('sm')]: {
@@ -61,8 +73,11 @@ const style = theme => ({
     display: 'none',
     [theme.breakpoints.down('sm')]: {
       display: 'block !important',
+      
     },
+
   },
+ 
   links: {
     textAlign: 'center',
     fontSize: '14px',
@@ -105,7 +120,11 @@ const style = theme => ({
 
   },
   iconbutton: {
-    marginRight: '0px'
+    marginRight: '0px',
+    color:'white'
+  },
+  iconbutton_color:{
+    color:'black'
   },
   menuiconbutton: {
     fontSize: '45px',

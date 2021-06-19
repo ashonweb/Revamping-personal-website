@@ -74,10 +74,12 @@ margin:'30px 0'
     paddingLeft: "30px",
     paddingRight: "30px",
     borderRadius: "30px",
-    fontSize: "11px",
+    fontSize: "14px",
     textTransform: "uppercase",
     fontWeight: 700,
-    letterSpacing: ".05rem"
+    letterSpacing: ".05rem",
+    textDecoration: "none",
+   
   }
 })
 export default style

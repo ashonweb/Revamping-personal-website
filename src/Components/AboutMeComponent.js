@@ -1,19 +1,16 @@
 import React from 'react';
-import { useHistory } from 'react-router-dom';
 import { PropTypes } from 'prop-types';
 import { withStyles } from '@material-ui/core/styles';
 import AboutMeComponentStyle from '../Styles/AboutMeComponentStyle';
-import { Typography ,Button} from '@material-ui/core';
+import { Typography } from '@material-ui/core';
 import dp from '../Assests/dp.jpg';
 import dots from '../Assests/dots.png';
 import SliderComponent from './SliderComponent'
+import { NavHashLink } from 'react-router-hash-link';
 
 const AboutMeComponent = (props) => {
   const { classes } = props;
-  let history = useHistory();
-  const contactme = ()=>{
-    history.push('/#ContactMe')
-  }
+  
   return (
     <>
       <div className={classes.container}>
@@ -22,16 +19,17 @@ const AboutMeComponent = (props) => {
         <img src={dp} alt={'profic  not available'} className={classes.image} />
         <div className={classes.mybio}>
         <h2 className={classes.heading}>My Bio</h2>
+      
             <Typography variant='subtitle1' className={classes.aboutme}>
-              Far far away, behind the word mountains, far from the countries Vokalia and Consonantia, there live the blind texts. Separated they live in Bookmarksgrove right at the coast of the Semantics, a large language ocean.
-
-              A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
+            I'm Bhagyashree Meghpal, Front end developer. Currently working at Dell Technologies (Bangalore).
+            I am passionate about web development and eager to work on new things with creative ideas.
             </Typography>
             <Typography variant='subtitle1' className={classes.aboutme}>
-              A small river named Duden flows by their place and supplies it with the necessary regelialia. It is a paradisematic country, in which roasted parts of sentences fly into your mouth.
-            </Typography>
+            When I'm not coding or pushing pixels ,you'll find me watching good movies, TV shows & listening to music.  </Typography>
             <SliderComponent/>
-            <Button onClick={contactme}className={classes.hireme}>HIRE ME</Button>
+            {/* <Button onClick={contactme}className={classes.hireme}>HIRE ME</Button> */}
+            <NavHashLink to='#ContactMe'className={classes.hireme} >Hire Me</NavHashLink>
+
 
         </div>
       </div>

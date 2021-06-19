@@ -45,4 +45,5 @@ code {
 }
 .MuiSlider-valueLabel {
   left: calc(-26% - 4px) !important;
+  display: none;
 }

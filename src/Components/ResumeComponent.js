@@ -8,7 +8,7 @@ import BusinessIcon from '@material-ui/icons/Business';
 import EventIcon from '@material-ui/icons/Event';
 const ResumeComponent = (props) => {
   const { classes } = props;
-  const [exp, setExp] = useState([
+  const [exp, ] = useState([
     {
       position: 'Analyst',
       type: 'FULL TIME',
@@ -25,7 +25,7 @@ const ResumeComponent = (props) => {
     },
 
   ])
-  const [edu, seEdu] = useState([
+  const [edu, ] = useState([
     {
       degree: 'Bachelor of Engineering (Computer Science)',
       branch: 'FULL TIME',
@@ -62,8 +62,8 @@ const ResumeComponent = (props) => {
             <div>
               <h2 className={classes.workexp}>Work Experience</h2>
               {exp.map((item, i) => (
-                <>
-                  <div className={classes.position_type}>
+                <div key={i}>
+                  <div  className={classes.position_type}>
                     <h2 className={classes.position}>{item.position}</h2>
                     <h2 className={classes.type}>{item.type}</h2>
 
@@ -85,13 +85,13 @@ const ResumeComponent = (props) => {
                       <span>{item.time}</span></span>
 
                   </div>
-                </>
+                </div>
               ))}
             </div>
             <div>
               <h2 className={classes.workexp}>Education</h2>
               {edu.map((item, i) => (
-                <>
+                <div key={i}>
                   <div className={classes.position_type}>
                     <h2 className={classes.position}>{item.degree}</h2>
                     <h2 className={classes.type}>{item.branch}</h2>
@@ -114,7 +114,7 @@ const ResumeComponent = (props) => {
                       <span>{item.time}</span></span>
 
                   </div>
-                </>
+                </div>
               ))}
             </div>
           </div>

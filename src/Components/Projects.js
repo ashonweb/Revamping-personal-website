@@ -86,7 +86,7 @@ const Projects = (props) => {
             </li>
             <li class="hex">
               <div class="hexIn">
-                <a class="hexLink" rel="noreferrer" href="https://drummachineapp_bmeghpal.surge.sh/" target='_blank'>
+                <a class="hexLink" rel="noreferrer" href=" https://drums_appliction.surge.sh" target='_blank'>
                   <div class='img' style={{ backgroundImage: `url(${drums})`, }}></div>
                   <h1 id="demo1">Drums Machine</h1>
                   <p id="demo4">An audio application which initiates different sounds on key inputs </p>

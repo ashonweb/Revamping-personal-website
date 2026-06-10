@@ -1,13 +1,15 @@
 import React, { useState } from 'react';
-import { PropTypes } from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 import ResumeComponentStyle from '../Styles/ResumeComponentStyle';
 import dp from '../Assests/dp.jpg';
-import PlaceIcon from '@material-ui/icons/Place';
-import BusinessIcon from '@material-ui/icons/Business';
-import EventIcon from '@material-ui/icons/Event';
-const ResumeComponent = (props) => {
-  const { classes } = props;
+import PlaceIcon from '@mui/icons-material/Place';
+import BusinessIcon from '@mui/icons-material/Business';
+import EventIcon from '@mui/icons-material/Event';
+
+const useStyles = makeStyles()(ResumeComponentStyle);
+
+const ResumeComponent = () => {
+  const { classes } = useStyles();
   const [exp, ] = useState([
     {
       position: 'Analyst',
@@ -127,8 +129,4 @@ const ResumeComponent = (props) => {
   )
 
 }
-ResumeComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-export default withStyles(ResumeComponentStyle)(ResumeComponent)
-
+export default ResumeComponent

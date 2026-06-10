@@ -1,10 +1,9 @@
 import React, { useState, useEffect, } from 'react';
-import { PropTypes } from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 import LogoLinksComponentStyle from '../Styles/LogoLinksComponentStyle';
-import {  Drawer, IconButton, List, Divider, ListItem, ClickAwayListener } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
+import {  Drawer, IconButton, List, Divider, ListItem, ClickAwayListener } from '@mui/material';
+import MenuIcon from '@mui/icons-material/Menu';
+import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import AboutMeComponent from './AboutMeComponent'
 import HomeComponent from './HomeComponent';
 import Projects from './Projects';
@@ -13,7 +12,10 @@ import Contact from './ContactComponent'
 
 import { NavHashLink } from 'react-router-hash-link';
 
-const LogoLinksComponent = (props) => {
+const useStyles = makeStyles()(LogoLinksComponentStyle);
+
+const LogoLinksComponent = () => {
+  const { classes } = useStyles();
   const [open, handleOpendrawer] = useState(false);
   const [isSticky, setSticky] = useState(false);
   const[scroll,setScroll] = useState(0)
@@ -21,36 +23,19 @@ const LogoLinksComponent = (props) => {
     handleOpendrawer(false)
   }
   const handleScroll = () => {
-    console.log(window.pageYOffset)
-    if (window.pageYOffset > 400) {
+    if (window.scrollY > 400) {
       setSticky(true);
-      setScroll(window.pageYOffset)
-      
-    }
-    // else if (window.pageYOffset > 600) {
-    //   // console.log(window.pageYOffset, "window.pageYoffset")
-    //   setSticky(true);
-    //   setScroll(window.pageYOffset)
-      
-    //   // window.location.hash='#AboutMe'
-    // }
+      setScroll(window.scrollY)
 
+    }
     else  {
       setSticky(false);
       setScroll(0)
-      // window.location.hash='#Home'
-
-
     }
   };
   useEffect(() => {
     window.addEventListener('scroll', handleScroll);
-
-
-
-
   }, []);
-  const { classes } = props;
 
   return (
     <div>
@@ -60,16 +45,16 @@ const LogoLinksComponent = (props) => {
         </div>
         <div className={classes.linksection}>
           <div className={classes.desktop}>
-           
-          <NavHashLink to='#Home' style={{color:(scroll<400)?"white":'black'}} activeClassName={(isSticky === true && scroll <400)? classes.activefixed : classes.active} className={isSticky === true ? classes.linksfixed : classes.links}>Home</NavHashLink>
-          <NavHashLink style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<1600)?'#96bb7c':'black'}} to='#AboutMe'  activeClassName={(isSticky === true) ? classes.activefixed : classes.active} className={(isSticky === true)? classes.linksfixed : classes.links}>About Me</NavHashLink>
-          <NavHashLink to='#Projects' style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<1600)?'black': (scroll<2625)?'#96bb7c':'black'}} activeClassName={isSticky === true ? classes.activefixed : classes.active} className={isSticky === true ? classes.linksfixed : classes.links}>Projects</NavHashLink>
-          <NavHashLink to='#Resume' style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<2625)?'black':(scroll<3320)?'#96bb7c':'black'}} activeClassName={isSticky === true ? classes.activefixed : classes.active} className={isSticky === true ? classes.linksfixed : classes.links}>Resume</NavHashLink>
-          <NavHashLink to='#ContactMe' style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<3320)?'black':'#96bb7c'}} activeClassName={isSticky === true ? classes.activefixed : classes.active} className={isSticky === true ? classes.linksfixed : classes.links}>Contact Me</NavHashLink>
-          
+
+          <NavHashLink to='#Home' style={{color:(scroll<400)?"white":'black'}} className={isSticky === true ? classes.linksfixed : classes.links}>Home</NavHashLink>
+          <NavHashLink style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<1600)?'#96bb7c':'black'}} to='#AboutMe' className={(isSticky === true)? classes.linksfixed : classes.links}>About Me</NavHashLink>
+          <NavHashLink to='#Projects' style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<1600)?'black': (scroll<2625)?'#96bb7c':'black'}} className={isSticky === true ? classes.linksfixed : classes.links}>Projects</NavHashLink>
+          <NavHashLink to='#Resume' style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<2625)?'black':(scroll<3320)?'#96bb7c':'black'}} className={isSticky === true ? classes.linksfixed : classes.links}>Resume</NavHashLink>
+          <NavHashLink to='#ContactMe' style={{color:(scroll<400 )?"rgba(255, 255, 255, 0.5)":(scroll<3320)?'black':'#96bb7c'}} className={isSticky === true ? classes.linksfixed : classes.links}>Contact Me</NavHashLink>
+
           </div>
           <div className={classes.mobile}  >
-            <IconButton onClick={() => handleOpendrawer(!open)} className={isSticky === true ? classes.iconbutton_color : classes.iconbutton} 
+            <IconButton onClick={() => handleOpendrawer(!open)} className={isSticky === true ? classes.iconbutton_color : classes.iconbutton}
               aria-label="open drawer"
               edge="end"
 
@@ -80,7 +65,7 @@ const LogoLinksComponent = (props) => {
           </div>
         </div>
       </div>
-     
+
       {(open === true && window.innerWidth < 960) && (
         <ClickAwayListener onClickAway={handleDrawerClose}>
 
@@ -89,7 +74,7 @@ const LogoLinksComponent = (props) => {
             variant="persistent"
             anchor="right"
             open={open}
-            onclose={handleDrawerClose}
+            onClose={handleDrawerClose}
             classes={{
               paper: classes.drawerPaper,
             }}
@@ -103,7 +88,7 @@ const LogoLinksComponent = (props) => {
             <List>
               {['Home', 'AboutMe', 'Projects', 'Resume', 'Contact Me'].map((links, index) => (
                 <ListItem key={links}>
-                  <NavHashLink to={'#'+links} activeClassName={classes.mobileactive} className={classes.mobilelinks}>{links}</NavHashLink>
+                  <NavHashLink to={'#'+links} className={classes.mobilelinks}>{links}</NavHashLink>
                 </ListItem>
               ))}
             </List>
@@ -132,9 +117,4 @@ const LogoLinksComponent = (props) => {
 
 
 }
-LogoLinksComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-export default withStyles(LogoLinksComponentStyle)(LogoLinksComponent)
-
-
+export default LogoLinksComponent

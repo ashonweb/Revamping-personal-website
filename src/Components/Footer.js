@@ -1,27 +1,21 @@
-import React, { } from 'react';
-import { PropTypes } from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import React from 'react';
+import { makeStyles } from 'tss-react/mui';
 import FooterComponentStyle from '../Styles/FooterComponentStyle';
-import MailIcon from '@material-ui/icons/Mail';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import GitHubIcon from '@material-ui/icons/GitHub';
-import LinkedInIcon from '@material-ui/icons/LinkedIn';
+import MailIcon from '@mui/icons-material/Mail';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
-const FooterComponent = (props) => {
-  const { classes } = props;
+const useStyles = makeStyles()(FooterComponentStyle);
 
-
-
+const FooterComponent = () => {
+  const { classes } = useStyles();
 
   return (
-    
+
     <div className={classes.container}>
       <div className={classes.container_main}>
       <div className={classes.about}>
-        {/* <div>
-          <h3 className={classes.heading}>About Me</h3>
-          <p>I'm Bhagyashree Meghpal.And I develop world class simple and beautiful web applications.I'm pretty sure I already told you that on my bio,but i figured it was worth repeating,you know.just in case you weren't paying attention or something</p>
-        </div> */}
         <div>
           <h3 className={classes.heading}>Connect</h3>
 
@@ -70,14 +64,10 @@ const FooterComponent = (props) => {
 
       </div>
       </div>
-      {/* <p style={{textAlign:'center',margin:0}}>Copyright ©2021 All rights reserved | This template is made with  by BMeghpal</p> */}
 
     </div>
 
-    
+
   )
 }
-FooterComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-export default withStyles(FooterComponentStyle)(FooterComponent)
+export default FooterComponent

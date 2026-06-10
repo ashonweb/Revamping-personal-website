@@ -1,16 +1,17 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 import AboutMeComponentStyle from '../Styles/AboutMeComponentStyle';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 import dp from '../Assests/dp.jpg';
 import dots from '../Assests/dots.png';
 import SliderComponent from './SliderComponent'
 import { NavHashLink } from 'react-router-hash-link';
 
-const AboutMeComponent = (props) => {
-  const { classes } = props;
-  
+const useStyles = makeStyles()(AboutMeComponentStyle);
+
+const AboutMeComponent = () => {
+  const { classes } = useStyles();
+
   return (
     <>
       <div className={classes.container}>
@@ -19,7 +20,7 @@ const AboutMeComponent = (props) => {
         <img src={dp} alt={'profic  not available'} className={classes.image} />
         <div className={classes.mybio}>
         <h2 className={classes.heading}>My Bio</h2>
-      
+
             <Typography variant='subtitle1' className={classes.aboutme}>
             I'm Bhagyashree Meghpal, Front end developer. Currently working at Dell Technologies (Bangalore).
             I am passionate about web development and eager to work on new things with creative ideas.
@@ -33,14 +34,10 @@ const AboutMeComponent = (props) => {
 
         </div>
       </div>
-      
+
 
     </>
   )
 
 }
-AboutMeComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-export default withStyles(AboutMeComponentStyle)(AboutMeComponent)
-
+export default AboutMeComponent

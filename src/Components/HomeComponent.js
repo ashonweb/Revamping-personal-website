@@ -1,12 +1,12 @@
 import React from 'react';
-import { PropTypes } from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 import HomeComponentStyle from '../Styles/HomeComponentStyle';
-import { Typography } from '@material-ui/core';
+import { Typography } from '@mui/material';
 
-const HomeComponent = (props) => {
+const useStyles = makeStyles()(HomeComponentStyle);
 
-  const { classes } = props;
+const HomeComponent = () => {
+  const { classes } = useStyles();
 
   return (
     <div>
@@ -27,9 +27,4 @@ const HomeComponent = (props) => {
 
 
 }
-HomeComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-export default withStyles(HomeComponentStyle)(HomeComponent)
-
-
+export default HomeComponent

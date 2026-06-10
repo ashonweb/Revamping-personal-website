@@ -1,20 +1,20 @@
 import React, { useState } from 'react';
-import { PropTypes } from 'prop-types';
-import { withStyles } from '@material-ui/core/styles';
+import { makeStyles } from 'tss-react/mui';
 import ContactComponentStyle from '../Styles/ContactComponentStyle';
-import { Button } from '@material-ui/core';
-import PlaceIcon from '@material-ui/icons/Place';
-import MailIcon from '@material-ui/icons/Mail';
-import TwitterIcon from '@material-ui/icons/Twitter';
-import GitHubIcon from '@material-ui/icons/GitHub';
+import { Button } from '@mui/material';
+import PlaceIcon from '@mui/icons-material/Place';
+import MailIcon from '@mui/icons-material/Mail';
+import TwitterIcon from '@mui/icons-material/Twitter';
+import GitHubIcon from '@mui/icons-material/GitHub';
 import { useForm, ValidationError } from '@formspree/react';
-import Snackbar from '@material-ui/core/Snackbar';
+import Snackbar from '@mui/material/Snackbar';
 
 import axios from "axios";
-require('dotenv/config');
 
-const ContactComponent = (props) => {
-  const { classes } = props;
+const useStyles = makeStyles()(ContactComponentStyle);
+
+const ContactComponent = () => {
+  const { classes } = useStyles();
   const [name, setName] = useState('');
   const [lastname, setLastName] = useState('');
   const [mail, setMail] = useState('');
@@ -23,7 +23,7 @@ const ContactComponent = (props) => {
 
   const [state, ] = useForm(`${process.env.REACT_APP_NOT_SECRET_CODE}`);
 
-  
+
   const handleClose =()=>{
     setOpen(false)
   }
@@ -48,7 +48,6 @@ const ContactComponent = (props) => {
     }
   };
   const handleOnSubmit = event => {
-    console.log(`https://formspree.io/f/${process.env.REACT_APP_NOT_SECRET_CODE}`,`${process.env.NODE_ENV}`,"dsdsf")
     event.preventDefault();
     setServerState({ submitting: true });
     axios({
@@ -65,12 +64,11 @@ const ContactComponent = (props) => {
         handleServerResponse(true, "Thanks for the Message !!");
       })
       .catch(r => {
-        console.log(r,"rr")
         handleServerResponse(false, r.response.data.error);
       });
   };
 
- 
+
   return (
     <div className={classes.container}>
       <h2 className={classes.heading}>Contact Me</h2>
@@ -82,13 +80,13 @@ const ContactComponent = (props) => {
             <div className={classes.row}>
               <div className={classes.col}>
                 <div className={classes.formgroup}>
-                  <label for='fname'>First Name</label>
+                  <label htmlFor='fname'>First Name</label>
                   <input type='text' name="First Name" className={classes.formcontrol} id='fname' value={name} onChange={(e) => { setName(e.target.value) }} />
                 </div>
               </div>
               <div className={classes.col}>
                 <div className={classes.formgroup}>
-                  <label for='lname'>Last Name</label>
+                  <label htmlFor='lname'>Last Name</label>
                   <input type='text' name="Last Name" className={classes.formcontrol} id='lname' value={lastname} onChange={(e) => { setLastName(e.target.value) }} />
                 </div>
               </div>
@@ -99,7 +97,7 @@ const ContactComponent = (props) => {
             <div className={classes.row}>
               <div className={classes.col1}>
                 <div className={classes.formgroup}>
-                  <label htmlfor='email'>Email</label>
+                  <label htmlFor='email'>Email</label>
                   <input type='email' name="Email" className={classes.formcontrol} id='email' value={mail} onChange={(e) => { setMail(e.target.value) }} />
                   <ValidationError
                     prefix="Email"
@@ -114,7 +112,7 @@ const ContactComponent = (props) => {
             <div className={classes.row}>
               <div className={classes.col1}>
                 <div className={classes.formgroup}>
-                  <label id='message' for='message'>Message</label>
+                  <label htmlFor='message'>Message</label>
                   <textarea col='19' name="Message" type='text' className={classes.formcontroltextarea} id='message' value={message} onChange={(e) => { setMessage(e.target.value) }} />
                   <ValidationError
                     prefix="Message"
@@ -149,11 +147,6 @@ const ContactComponent = (props) => {
         </div>
 
       </div>
-      {/* {serverState.status && (
-          <p className={!serverState.status.ok ? "errorMsg" : ""}>
-            {serverState.status.msg}
-          </p>
-        )} */}
       {serverState.status && (
         <>
        <Snackbar
@@ -162,18 +155,15 @@ const ContactComponent = (props) => {
          horizontal: 'center',
        }}
        open={open}
-       
+
        autoHideDuration={1000}
        onClose={handleClose}
        message={serverState.status.msg}
-       
+
      />
      </>
       )}
     </div>
   )
 }
-ContactComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-export default withStyles(ContactComponentStyle)(ContactComponent)
+export default ContactComponent

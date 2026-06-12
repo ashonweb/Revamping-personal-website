@@ -1,48 +1,215 @@
-import image from '../Assests/background.jpeg';
-
 const style = theme => ({
-  container: {
-    backgroundImage: `url(${image})`,
-    minHeight: "100vh",
-    filter: "blur(4px)",
-    backgroundAttachment: "fixed",
-  backgroundPosition: "center",
-  backgroundRepeat: "no-repeat",
-  backgroundSize: "cover",
+  hero: {
+    minHeight: '100vh',
+    display: 'grid',
+    gridTemplateColumns: '1fr 400px',
+    alignItems: 'center',
+    gap: 64,
+    padding: '100px 72px 80px',
+    position: 'relative',
+    overflow: 'hidden',
+    backgroundColor: '#0a0e1a',
+    [theme.breakpoints.down('md')]: {
+      gridTemplateColumns: '1fr',
+      padding: '100px 24px 60px',
+      gap: 48,
+    },
   },
-  maincontentstartshere: {
-    position: "absolute",
+  heroGrid: {
+    position: 'absolute', inset: 0,
+    backgroundImage: `
+      linear-gradient(rgba(79,142,247,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(79,142,247,0.035) 1px, transparent 1px)
+    `,
+    backgroundSize: '56px 56px',
+    maskImage: 'radial-gradient(ellipse 90% 90% at 40% 50%, black 20%, transparent 100%)',
+    WebkitMaskImage: 'radial-gradient(ellipse 90% 90% at 40% 50%, black 20%, transparent 100%)',
+    pointerEvents: 'none',
+  },
+  heroGlow: {
+    position: 'absolute',
+    width: 700, height: 700,
+    borderRadius: '50%',
+    background: 'radial-gradient(circle, rgba(79,142,247,0.1) 0%, transparent 65%)',
+    top: '50%', left: '10%',
+    transform: 'translate(-50%, -50%)',
+    pointerEvents: 'none',
+  },
+  heroLeft: {
+    position: 'relative',
+    zIndex: 1,
+  },
+  badge: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 8,
+    padding: '5px 14px 5px 10px',
+    border: '1px solid rgba(100,255,218,0.2)',
+    borderRadius: 100,
+    background: 'rgba(100,255,218,0.05)',
+    fontFamily: '"Fira Code", monospace',
+    fontSize: 12,
+    color: '#64ffda',
+    marginBottom: 32,
+  },
+  badgeDot: {
+    width: 7, height: 7,
+    borderRadius: '50%',
+    background: '#64ffda',
+    animation: 'blink 1.8s ease-in-out infinite',
+    flexShrink: 0,
+    '@keyframes blink': {
+      '0%, 100%': { opacity: 1 },
+      '50%': { opacity: 0.2 },
+    },
+  },
+  heroName: {
+    fontSize: 'clamp(48px, 6.5vw, 80px)',
+    fontWeight: 900,
+    lineHeight: 1.0,
+    letterSpacing: '-3px',
+    marginBottom: 20,
+  },
+  heroNameDim: {
+    display: 'block',
+    color: '#2a3a5c',
+    fontWeight: 300,
+  },
+  heroNameMain: {
+    display: 'block',
+    color: '#f1f5f9',
+  },
+  heroNameAccent: {
+    display: 'block',
+    color: '#4f8ef7',
+  },
+  heroRole: {
+    fontSize: 15,
+    fontWeight: 400,
+    color: '#4b5977',
+    marginBottom: 20,
+    letterSpacing: '0.02em',
+    '& strong': { color: '#cbd5e1', fontWeight: 600 },
+  },
+  heroDesc: {
+    fontSize: 15,
+    color: '#4b5977',
+    maxWidth: 500,
+    lineHeight: 1.85,
+    marginBottom: 40,
+  },
+  heroActions: {
+    display: 'flex',
+    gap: 14,
+    flexWrap: 'wrap',
+    marginBottom: 48,
+  },
+  btnPrimary: {
+    padding: '13px 28px',
+    background: '#4f8ef7',
+    color: '#fff',
+    border: 'none',
+    borderRadius: 8,
+    fontSize: 14,
+    fontWeight: 600,
+    fontFamily: '"Inter", sans-serif',
+    cursor: 'pointer',
+    letterSpacing: '0.02em',
+    boxShadow: '0 0 24px rgba(79,142,247,0.3)',
+    transition: 'opacity 0.2s, transform 0.15s',
+    '&:hover': { opacity: 0.88, transform: 'translateY(-1px)' },
+  },
+  btnGhost: {
+    padding: '13px 28px',
+    background: 'transparent',
+    color: '#cbd5e1',
+    border: '1px solid rgba(255,255,255,0.1)',
+    borderRadius: 8,
+    fontSize: 14,
+    fontWeight: 500,
+    fontFamily: '"Inter", sans-serif',
+    cursor: 'pointer',
+    transition: 'border-color 0.2s, transform 0.15s',
+    textDecoration: 'none',
+    display: 'inline-flex',
+    alignItems: 'center',
+    '&:hover': { borderColor: 'rgba(255,255,255,0.25)', transform: 'translateY(-1px)' },
+  },
+  heroSocials: {
+    display: 'flex',
+    gap: 24,
+    listStyle: 'none',
+  },
+  socialLink: {
+    color: '#4b5977',
+    textDecoration: 'none',
+    fontSize: 13,
+    fontWeight: 500,
+    display: 'flex',
+    alignItems: 'center',
+    gap: 7,
+    transition: 'color 0.2s',
+    '& svg': { width: 15, height: 15, flexShrink: 0 },
+    '&:hover': { color: '#f1f5f9' },
   },
 
-  authorname:{
-    // backgroundColor: `rgb(0,0,0)`,/* Fallback color */
-    // backgroundColor: `rgba(0,0,0, 0.4)`, /* Black w/opacity/see-through */
-    fontWeight: "bold",
-    // border: "3px solid #f1f1f1",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: `translate(${'-50%, -50%'})`,
-    zIndex: 2,
-    textAlign: "center",
-    color:"white",
-    fontSize:'50px',
-    lineHeight:1,
-    width:'80%',
+  /* hero right */
+  heroRight: {
+    position: 'relative',
+    zIndex: 1,
+    display: 'flex',
+    flexDirection: 'column',
+    gap: 16,
+    [theme.breakpoints.down('md')]: { display: 'none' },
+  },
+  photoWrap: {
+    position: 'relative',
+    borderRadius: 20,
+    overflow: 'hidden',
+  },
+  photo: {
+    width: '100%',
+    borderRadius: 20,
+    filter: 'brightness(0.9) saturate(0.85)',
+    transition: 'filter 0.4s',
+    '&:hover': { filter: 'brightness(1) saturate(1)' },
+  },
+  photoOverlay: {
+    position: 'absolute', inset: 0, borderRadius: 20,
+    background: 'linear-gradient(to top, rgba(10,14,26,0.55) 0%, transparent 50%)',
+    pointerEvents: 'none',
+  },
+  photoBorder: {
+    position: 'absolute', inset: 0, borderRadius: 20,
+    border: '1px solid rgba(79,142,247,0.2)',
+    pointerEvents: 'none',
+  },
+  statsGrid: {
+    display: 'grid',
+    gridTemplateColumns: 'repeat(3, 1fr)',
+    gap: 12,
+  },
+  statBox: {
+    background: '#0f1626',
+    border: '1px solid rgba(255,255,255,0.07)',
+    borderRadius: 10,
+    padding: '16px 12px',
+    textAlign: 'center',
+  },
+  statNum: {
+    fontSize: 24,
+    fontWeight: 800,
+    color: '#f1f5f9',
+    lineHeight: 1,
+    fontFamily: '"Inter", sans-serif',
+    '& span': { color: '#4f8ef7' },
+  },
+  statLabel: {
+    fontSize: 11,
+    color: '#4b5977',
+    marginTop: 4,
+    fontFamily: '"Inter", sans-serif',
+  },
+});
 
-  },
-  name:{
-    fontSize:'50px',
-    fontWeight:900,
-    fontFamily:'Nunito,sans-serif'
-  },
-  role:{
-    fontSize:'45px',
-    fontWeight:900,
-    fontFamily:'Nunito,sans-serif'
-  },
-
-  
-  
-})
-export default style
+export default style;

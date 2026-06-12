@@ -1,85 +1,124 @@
 const style = theme => ({
-  container:{
-    // backgroundImage: `url(${dots})`,
-    position:'relative',
-    display:'flex',
-    padding:'30px',
-    justifyContent:'center',
-    // padding:'30px 125px',
-    [theme.breakpoints.down('sm')]: {
-      padding:'10px',
-      display:'block'
+  section: {
+    padding: '100px 72px',
+    backgroundColor: '#0f1626',
+    [theme.breakpoints.down('md')]: { padding: '80px 24px' },
+  },
+  sectionLabel: {
+    fontFamily: '"Fira Code", monospace',
+    fontSize: 12,
+    color: '#4f8ef7',
+    display: 'block',
+    marginBottom: 10,
+    letterSpacing: '0.04em',
+  },
+  sectionTitle: {
+    fontSize: 'clamp(34px, 4vw, 52px)',
+    fontWeight: 800,
+    color: '#f1f5f9',
+    letterSpacing: '-1.5px',
+    lineHeight: 1.05,
+    marginBottom: 56,
+  },
+  statsStrip: {
+    display: 'flex',
+    gap: 56,
+    marginBottom: 64,
+    paddingBottom: 48,
+    borderBottom: '1px solid rgba(255,255,255,0.07)',
+    flexWrap: 'wrap',
+    [theme.breakpoints.down('sm')]: { gap: 32 },
+  },
+  statNum: {
+    fontSize: 40,
+    fontWeight: 800,
+    color: '#f1f5f9',
+    lineHeight: 1,
+    '& span': { color: '#4f8ef7' },
+  },
+  statLabel: {
+    fontSize: 13,
+    color: '#4b5977',
+    marginTop: 4,
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: '340px 1fr',
+    gap: 72,
+    alignItems: 'start',
+    [theme.breakpoints.down('md')]: {
+      gridTemplateColumns: '1fr',
+      gap: 40,
     },
-    margin:"25px 0"
   },
-  dotimage :{
-    position:'absolute',
-    top:'0%',
-    left:'50%',
-    height:'300px',
-    width:'300px',
-    marginLeft: '-150px',
-    [theme.breakpoints.down('sm')]: {
-      
-      display:'none'
-    },
+  photoWrap: {
+    position: 'relative',
+    [theme.breakpoints.down('md')]: { maxWidth: 260 },
   },
-  content:{
-zIndex:2,
-display:'flex',
-margin:'30px 0'
+  photo: {
+    width: '100%',
+    borderRadius: 16,
+    filter: 'grayscale(15%)',
   },
-  image:{
-    zIndex:2,
-    flexBasis:'50%',
-    height:'50%',
-    width:'50%',
-    [theme.breakpoints.down('sm')]: {
-      width:'100%'
-    }
-   
+  photoBorder: {
+    position: 'absolute', inset: -10,
+    border: '1px solid rgba(79,142,247,0.2)',
+    borderRadius: 22,
+    pointerEvents: 'none',
   },
-  mybio:{
-    zIndex:2,
-    height: '50%',
-    flexBasis:'50%',
-    // margin: '2% 0 0 5%',
-    [theme.breakpoints.up('md')]: {
-    margin: '3% 0 0 11%',
+  photoGlow: {
+    position: 'absolute',
+    bottom: -30, right: -30,
+    width: 150, height: 150,
+    borderRadius: '50%',
+    background: 'radial-gradient(circle, rgba(79,142,247,0.2), transparent 70%)',
+    pointerEvents: 'none',
   },
-    [theme.breakpoints.up('lg')]: {
-    margin: '3% 0 0 7%',
-  },
-    [theme.breakpoints.up('xl')]: {
-    margin: '3% 0 0 5%',
-  },
-   
-    
-  },
-  heading:{
-    color:'black',
-    fontFamily: 'Nunito,sans-serif',
-    fontWeight:400,
-    fontSize: '3rem',
-    margin:'0px 0 10px 0'
-  },
-  aboutme:{
-    marginBottom:'1rem'
-  },
-  hireme:{
-    color:'white',
-    background: "#96bb7c",
-    paddingTop: "15px",
-    paddingBottom: "15px",
-    paddingLeft: "30px",
-    paddingRight: "30px",
-    borderRadius: "30px",
-    fontSize: "14px",
-    textTransform: "uppercase",
+  textContent: {},
+  heading3: {
+    fontSize: 20,
     fontWeight: 700,
-    letterSpacing: ".05rem",
-    textDecoration: "none",
-   
-  }
-})
-export default style
+    color: '#f1f5f9',
+    marginBottom: 20,
+    lineHeight: 1.3,
+  },
+  para: {
+    fontSize: 15,
+    color: '#4b5977',
+    lineHeight: 1.85,
+    marginBottom: 16,
+    '& strong': { color: '#cbd5e1', fontWeight: 600 },
+  },
+  chips: {
+    display: 'flex',
+    flexWrap: 'wrap',
+    gap: 8,
+    marginTop: 28,
+  },
+  chip: {
+    padding: '5px 13px',
+    border: '1px solid rgba(79,142,247,0.35)',
+    borderRadius: 100,
+    fontFamily: '"Fira Code", monospace',
+    fontSize: 12,
+    color: '#94a3b8',
+    background: 'rgba(79,142,247,0.08)',
+    cursor: 'default',
+    transition: 'border-color 0.2s, color 0.2s',
+    '&:hover': { borderColor: '#4f8ef7', color: '#64ffda' },
+  },
+  chipSecondary: {
+    padding: '5px 13px',
+    border: '1px solid rgba(255,255,255,0.07)',
+    borderRadius: 100,
+    fontFamily: '"Fira Code", monospace',
+    fontSize: 12,
+    color: '#4b5977',
+    background: 'transparent',
+    cursor: 'default',
+    transition: 'border-color 0.2s, color 0.2s',
+    '&:hover': { borderColor: 'rgba(255,255,255,0.2)', color: '#94a3b8' },
+  },
+});
+
+export default style;

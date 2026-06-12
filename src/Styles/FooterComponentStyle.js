@@ -1,93 +1,34 @@
 const style = theme => ({
-  container:{
-    // backgroundImage: `url(${dots})`,
-    position:'relative',
-    // padding:'30px 125px',
-    background: "#efefef",
-    fontSize: "15px",
-    color: "#888",
-    
-    justifyContent:"space-between",
+  footer: {
+    padding: '24px 72px',
+    borderTop: '1px solid rgba(255,255,255,0.07)',
+    display: 'flex',
+    justifyContent: 'space-between',
+    alignItems: 'center',
+    backgroundColor: '#0a0e1a',
+    [theme.breakpoints.down('md')]: { padding: '24px' },
     [theme.breakpoints.down('sm')]: {
-      display:'block'
-    },
-   
-  },
-  container_main:{
-    // backgroundImage: `url(${dots})`,
-    position:'relative',
-    // padding:'30px 125px',
-    background: "#efefef",
-    fontSize: "15px",
-    color: "#888",
-    padding: "70px 30px",
-    display:'flex',
-    justifyContent:"space-between",
-    [theme.breakpoints.down('sm')]: {
-      display:'block'
-    },
-   
-  },
-  heading:{
-    color:'black',
-    fontFamily: 'Nunito,sans-serif',
-    fontSize: '1rem',
-    margin:'0px 0 30px 0',
-    textAlign:'left',
-    [theme.breakpoints.down('sm')]: {
-      textAlign:'left'
+      flexDirection: 'column',
+      gap: 12,
+      textAlign: 'center',
     },
   },
-  about:{
-    flexBasis:'30%',
-    
+  copy: {
+    fontSize: 12,
+    color: '#4b5977',
+    '& span': { color: '#4f8ef7' },
   },
-  skills:{
-    flexBasis:'0%',
-    [theme.breakpoints.down('sm')]: {
-      textAlign:'center',
-      margin:'20px 0'
-    },
-    
+  backToTop: {
+    fontSize: 12,
+    color: '#4b5977',
+    textDecoration: 'none',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 6,
+    transition: 'color 0.2s',
+    '& svg': { width: 13, height: 13 },
+    '&:hover': { color: '#f1f5f9' },
   },
-  contact:{
-    flexBasis:'20%',
-    [theme.breakpoints.down('sm')]: {
-      textAlign:'center'
-    },
-  },
-  refrenceconnect :{
-    marginRight: "10px",
-    display: "inline-block",
-    width: "30px",
-    height: "30px",
-    position: "relative",
-    background: "#777",
-    borderRadius: "50%",
-    color: "#ffffff",
-    '&:hover':{
-      background: "#96bb7c !important",
+});
 
-    }
-  },
-  icons:{
-    margin: "0 auto",
-    position: "absolute",
-    top: "50%",
-    left: "50%",
-    transform: `translate(-50%, -50%) `,
-    '&:hover':{
-      color: "white",
-
-    }
-  },
-  list:{
-    listStyleType:'none',
-    padding:'0',
-    [theme.breakpoints.down('sm')]: {
-      textAlign:'left'
-    },
-  }
-  
-})
-export default style
+export default style;

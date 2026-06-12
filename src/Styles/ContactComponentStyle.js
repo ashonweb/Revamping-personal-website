@@ -1,150 +1,85 @@
 const style = theme => ({
-  container:{
-    // backgroundImage: `url(${dots})`,
-    position:'relative',
-    padding:'30px',
-    // padding:'30px 125px',
-    [theme.breakpoints.down('sm')]: {
-      padding:'10px'
-    },
-   
-    margin:"25px 0"
+  section: {
+    padding: '100px 72px',
+    backgroundColor: '#0a0e1a',
+    [theme.breakpoints.down('md')]: { padding: '80px 24px' },
   },
-  heading:{
-    color:'black',
-    fontFamily: 'Nunito,sans-serif',
-    fontWeight:400,
-    fontSize: '3rem',
-    margin:'30px 0 10px 0',
-    textAlign:'center',
-    [theme.breakpoints.down('sm')]: {
-      textAlign:'left'
-    },
+  inner: {
+    maxWidth: 640,
+    margin: '0 auto',
+    textAlign: 'center',
   },
-  info:{
-    color:'black',
-    fontFamily: 'Nunito,sans-serif',
-    fontWeight:400,
-    fontSize: '2rem',
-    margin:'30px 0 10px 0',
+  sectionLabel: {
+    fontFamily: '"Fira Code", monospace',
+    fontSize: 12,
+    color: '#4f8ef7',
+    display: 'block',
+    marginBottom: 10,
+    letterSpacing: '0.04em',
   },
-  location:{
-    display:'flex',
-    color:'black',
-    fontFamily: 'Nunito,sans-serif',
-    fontWeight:400,
-    fontSize: '1rem',
-    margin:'30px 0 10px 0',
+  sectionTitle: {
+    fontSize: 'clamp(34px, 4vw, 52px)',
+    fontWeight: 800,
+    color: '#f1f5f9',
+    letterSpacing: '-1.5px',
+    lineHeight: 1.05,
+    marginBottom: 16,
   },
-  contentcontainer:{
-    
-    display:'flex',gap:'10%',
-    [theme.breakpoints.down('sm')]: {
-      display:'block'
-    }},
-
-    footer:{
-background: "#efefef",
-    },
-    row:{
-      margin:"15px 0",
-      display:'flex',
-      flexWrap:'wrap',
-      flexBasis:'55%'
-    },
-    col:{
-      flex: '0 0 50%',
-    maxWidth: "50%",
-    },
-    col1:{
-      flex: '0 0 100%',
-    maxWidth: "100%",
-    },
-    formcontrol:{
-      width:'100%',
-      border: "none",
-    fontSize: "16px",
-    height: "45px",
-    paddingLeft: 0,
-    paddingRight: 0,
-    background: "transparent",
-    borderBottom: "1px solid #43434d",
-    borderRadius: 0,
-    color: "#000000",
-    '&:focus-visible':{
-      color: '#000000',
-    borderColor: '#96bb7c',
-    boxShadow: "none",
-    background: "transparent",
-    outline:'none'
-    },
-    '&:focus':{
-      color: '#000000',
-    borderColor: '#96bb7c',
-    boxShadow: "none",
-    background: "transparent",
-    },
-    '&:active':{
-      color: '#000000',
-    borderColor: '#96bb7c',
-    boxShadow: "none",
-    background: "transparent",
-    }
+  sub: {
+    fontSize: 15,
+    color: '#4b5977',
+    lineHeight: 1.8,
+    maxWidth: 480,
+    margin: '0 auto 48px',
   },
-  formgroup:{
-    padding:'0 3px'
-  },
-  formcontroltextarea:{
-    width:'100%',
-    border: "none",
-  fontSize: "16px",
-  height: "80px",
-  paddingLeft: 0,
-  paddingRight: 0,
-  background: "transparent",
-  borderBottom: "1px solid #43434d",
-  borderRadius: 0,
-  color: "#000000",
-  '&:focus-visible':{
-    color: '#000000',
-  borderColor: '#96bb7c',
-  boxShadow: "none",
-  background: "transparent",
-  outline:'none'
-  },
-  '&:focus':{
-    color: '#000000',
-  borderColor: '#96bb7c',
-  boxShadow: "none",
-  background: "transparent",
-  },
-  '&:active':{
-    color: '#000000',
-  borderColor: '#96bb7c',
-  boxShadow: "none",
-  background: "transparent",
-  }
-  },
-  message:{
-    color:'white',
-    background: "#96bb7c",
-    paddingTop: "15px",
-    paddingBottom: "15px",
-    paddingLeft: "30px",
-    paddingRight: "30px",
-    borderRadius: "30px",
-    fontSize: "11px",
-    textTransform: "uppercase",
+  emailLink: {
+    display: 'inline-block',
+    fontSize: 'clamp(18px, 3vw, 30px)',
     fontWeight: 700,
-    letterSpacing: ".05rem",
-    '&:hover':{
-      color:'white !important',
-    background: "#96bb7c !important",
-    }
-   
-  }
+    color: '#f1f5f9',
+    textDecoration: 'none',
+    letterSpacing: '-0.5px',
+    position: 'relative',
+    marginBottom: 56,
+    transition: 'color 0.2s',
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      bottom: -4, left: 0, right: 0,
+      height: 2,
+      background: '#4f8ef7',
+      transform: 'scaleX(0)',
+      transformOrigin: 'left',
+      transition: 'transform 0.3s ease',
+    },
+    '&:hover': { color: '#4f8ef7' },
+    '&:hover::after': { transform: 'scaleX(1)' },
+  },
+  socials: {
+    display: 'flex',
+    justifyContent: 'center',
+    gap: 12,
+    flexWrap: 'wrap',
+  },
+  socialPill: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 8,
+    padding: '10px 22px',
+    border: '1px solid rgba(255,255,255,0.07)',
+    borderRadius: 8,
+    color: '#4b5977',
+    textDecoration: 'none',
+    fontSize: 13,
+    fontWeight: 500,
+    transition: 'border-color 0.2s, color 0.2s, background 0.2s',
+    '& svg': { width: 15, height: 15, flexShrink: 0 },
+    '&:hover': {
+      borderColor: 'rgba(79,142,247,0.35)',
+      color: '#f1f5f9',
+      background: 'rgba(79,142,247,0.05)',
+    },
+  },
+});
 
-    
-  
-})
-export default style
+export default style;

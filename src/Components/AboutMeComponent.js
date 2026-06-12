@@ -1,43 +1,79 @@
 import React from 'react';
 import { makeStyles } from 'tss-react/mui';
 import AboutMeComponentStyle from '../Styles/AboutMeComponentStyle';
-import { Typography } from '@mui/material';
 import dp from '../Assests/dp.jpg';
-import dots from '../Assests/dots.png';
-import SliderComponent from './SliderComponent'
-import { NavHashLink } from 'react-router-hash-link';
 
 const useStyles = makeStyles()(AboutMeComponentStyle);
+
+const CORE = ['React', 'TypeScript', 'Tailwind CSS', 'Node.js', 'Material UI', 'Jest / RTL', 'REST APIs', 'Git', 'Redux', 'MongoDB', 'Micro-frontends', 'Styled Components', 'SCSS/SASS', 'Performance Optimization'];
+const FAMILIAR = ['Next.js', 'GraphQL', 'JavaScript', 'SQL', 'TFS', 'AWS', 'CI/CD', 'Docker', 'Express', 'Axios', 'Figma', 'Jira', 'GitHub Actions', 'Vercel', 'AI Integration'];
 
 const AboutMeComponent = () => {
   const { classes } = useStyles();
 
   return (
-    <>
-      <div className={classes.container}>
+    <section className={classes.section}>
+      <h2 className={classes.sectionTitle}>About Me</h2>
 
-        <img src={dots} alt={'profic  not available'} className={classes.dotimage} />
-        <img src={dp} alt={'profic  not available'} className={classes.image} />
-        <div className={classes.mybio}>
-        <h2 className={classes.heading}>My Bio</h2>
-
-            <Typography variant='subtitle1' className={classes.aboutme}>
-            I'm Bhagyashree Meghpal, Front end developer. Currently working at Dell Technologies (Bangalore).
-            I am passionate about web development and eager to work on new things with creative ideas.
-            </Typography>
-            <Typography variant='subtitle1' className={classes.aboutme}>
-            When I'm not coding or pushing pixels ,you'll find me watching good movies, TV shows & listening to music.  </Typography>
-            <SliderComponent/>
-            {/* <Button onClick={contactme}className={classes.hireme}>HIRE ME</Button> */}
-            <NavHashLink to='#ContactMe'className={classes.hireme} >Hire Me</NavHashLink>
-
-
+      <div className={classes.statsStrip}>
+        <div>
+          <div className={classes.statNum}>8<span>+</span></div>
+          <div className={classes.statLabel}>Years of experience</div>
+        </div>
+        <div>
+          <div className={classes.statNum}>10<span>+</span></div>
+          <div className={classes.statLabel}>Personal projects</div>
+        </div>
+        <div>
+          <div className={classes.statNum}>7<span>+</span></div>
+          <div className={classes.statLabel}>Professional projects</div>
+        </div>
+        <div>
+          <div className={classes.statNum}>3</div>
+          <div className={classes.statLabel}>Companies</div>
+        </div>
+        <div>
+          <div className={classes.statNum}>∞</div>
+          <div className={classes.statLabel}>Coffee consumed</div>
         </div>
       </div>
 
+      <div className={classes.grid}>
+        <div className={classes.photoWrap}>
+          <img src={dp} alt="Bhagyashree Meghpal" className={classes.photo} />
+          <div className={classes.photoBorder} />
+          <div className={classes.photoGlow} />
+        </div>
 
-    </>
-  )
+        <div className={classes.textContent}>
+          <h3 className={classes.heading3}>I build products people love to use.</h3>
+          <p className={classes.para}>
+            I'm a Senior Frontend Engineer with 8+ years of experience turning complex problems
+            into clean, intuitive web experiences. I specialize in <strong>React</strong> and the
+            modern JavaScript ecosystem, with a strong eye for performance and detail.
+          </p>
+          <p className={classes.para}>
+            Currently at <strong>Deloitte</strong> as a Software Engineer II, and previously at{' '}
+            <strong>Dell Technologies</strong> and <strong>TCS</strong>, where I shipped
+            production-grade features used daily by thousands of users.
+          </p>
+          <p className={classes.para}>
+            I care about the details that make products feel right — fast load times, accessible
+            interfaces, and code that's easy for teammates to read and extend.
+          </p>
 
-}
-export default AboutMeComponent
+          <div className={classes.chips}>
+            {CORE.map(chip => (
+              <span key={chip} className={classes.chip}>{chip}</span>
+            ))}
+            {FAMILIAR.map(chip => (
+              <span key={chip} className={classes.chipSecondary}>{chip}</span>
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+export default AboutMeComponent;

@@ -1,92 +1,129 @@
 const style = theme => ({
-  container:{
-    // backgroundImage: `url(${dots})`,
-    position:'relative',
-    padding:'30px',
-    // padding:'30px 125px',
-    [theme.breakpoints.down('sm')]: {
-      padding:'10px'
-    },
-   
-    margin:"25px 0"
+  section: {
+    padding: '100px 72px',
+    backgroundColor: '#0f1626',
+    [theme.breakpoints.down('md')]: { padding: '80px 24px' },
   },
-  heading:{
-    color:'black',
-    fontFamily: 'Nunito,sans-serif',
-    fontWeight:400,
-    fontSize: '3rem',
-    margin:'30px 0 10px 0',
-    textAlign:'center',
-    [theme.breakpoints.down('sm')]: {
-      textAlign:'left'
-    },
-  },
-  contentcontainer:{
-    
-    display:'flex',gap:'10%',
-    [theme.breakpoints.down('sm')]: {
-      display:'block'
-    }},
-  image:{
-    zIndex:2,
-    flexBasis:'30%',
-    height:'50%',
-    width:'25%',
-    [theme.breakpoints.down('sm')]: {
-      width:'100%',
-      display:'none',
-    }
-   
-  },
-  exp:{
-    flexBasis:'50%',
-  },
-  workexp:{
-    textAlign:'left',
-    color:'black',
-    fontFamily: 'Nunito,sans-serif',
-    fontWeight:400,
-    fontSize: '2rem',
-  },
-  position_type:{
-    display:'flex',
-    justifyContent:'space-between'
-  },
-  position:{
-    textAlign:'left',
-    color:'black',
-    fontFamily: 'Nunito,sans-serif',
-    fontWeight:400,
-    fontSize: '1rem',
-  },
-  type:{
-    textTransform: 'uppercase',
-    fontSize: '12px',
-    fontWeight: 700,
-    letterSpacing: '.1rem',
-    padding: '7px 20px',
-    borderRadius: '30px',
-    background: `rgba(150, 187, 124, 0.1)`,
-    color: '#96bb7c',
-  },
-  otherdetails:{
-    display:'flex',
-    justifyContent:'space-between',
-    [theme.breakpoints.down('sm')]: {
-      display:'block'
-    }
-  },
-  icon:{
-    color:'grey',
-    height:'5px',
-    width:'5px'
-  },
-  company_place:{
-    display: "flex",
+  headerRow: {
+    display: 'flex',
+    justifyContent: 'space-between',
     alignItems: 'flex-start',
-    gap: '5px'
-  }
-  
-  
-})
-export default style
+    marginBottom: 60,
+    [theme.breakpoints.down('sm')]: { flexDirection: 'column', gap: 20 },
+  },
+  sectionLabel: {
+    fontFamily: '"Fira Code", monospace',
+    fontSize: 12,
+    color: '#4f8ef7',
+    display: 'block',
+    marginBottom: 10,
+    letterSpacing: '0.04em',
+  },
+  sectionTitle: {
+    fontSize: 'clamp(34px, 4vw, 52px)',
+    fontWeight: 800,
+    color: '#f1f5f9',
+    letterSpacing: '-1.5px',
+    lineHeight: 1.05,
+  },
+  cvBtn: {
+    display: 'inline-flex',
+    alignItems: 'center',
+    gap: 8,
+    padding: '10px 22px',
+    border: '1px solid rgba(255,255,255,0.1)',
+    borderRadius: 8,
+    fontSize: 13,
+    fontWeight: 600,
+    color: '#cbd5e1',
+    textDecoration: 'none',
+    flexShrink: 0,
+    marginTop: 8,
+    transition: 'border-color 0.2s, color 0.2s',
+    '& svg': { width: 14, height: 14, flexShrink: 0 },
+    '&:hover': { borderColor: '#4f8ef7', color: '#4f8ef7' },
+  },
+  grid: {
+    display: 'grid',
+    gridTemplateColumns: '1fr 1fr',
+    gap: 64,
+    [theme.breakpoints.down('md')]: { gridTemplateColumns: '1fr', gap: 48 },
+  },
+  groupTitle: {
+    fontSize: 13,
+    fontWeight: 600,
+    color: '#4b5977',
+    textTransform: 'uppercase',
+    letterSpacing: '0.08em',
+    marginBottom: 32,
+    display: 'flex',
+    alignItems: 'center',
+    gap: 12,
+    '&::after': {
+      content: '""',
+      flex: 1,
+      height: 1,
+      background: 'rgba(255,255,255,0.07)',
+    },
+  },
+  item: {
+    position: 'relative',
+    paddingLeft: 24,
+    marginBottom: 36,
+    '&::before': {
+      content: '""',
+      position: 'absolute',
+      left: 0, top: 5,
+      width: 8, height: 8,
+      borderRadius: '50%',
+      background: '#4f8ef7',
+      boxShadow: '0 0 0 3px rgba(79,142,247,0.15)',
+    },
+    '&::after': {
+      content: '""',
+      position: 'absolute',
+      left: 3.5, top: 17,
+      width: 1, bottom: -28,
+      background: 'rgba(255,255,255,0.07)',
+    },
+    '&:last-child::after': { display: 'none' },
+  },
+  itemDate: {
+    fontFamily: '"Fira Code", monospace',
+    fontSize: 11,
+    color: '#4f8ef7',
+    letterSpacing: '0.04em',
+    marginBottom: 6,
+  },
+  itemTitle: {
+    fontSize: 15,
+    fontWeight: 700,
+    color: '#f1f5f9',
+    marginBottom: 2,
+  },
+  itemOrg: {
+    fontSize: 13,
+    fontWeight: 500,
+    color: '#cbd5e1',
+    marginBottom: 8,
+  },
+  itemBadge: {
+    display: 'inline-block',
+    fontSize: 10,
+    fontWeight: 700,
+    textTransform: 'uppercase',
+    letterSpacing: '0.08em',
+    padding: '2px 8px',
+    borderRadius: 4,
+    background: 'rgba(79,142,247,0.1)',
+    color: '#4f8ef7',
+    marginLeft: 8,
+  },
+  itemDesc: {
+    fontSize: 13,
+    color: '#4b5977',
+    lineHeight: 1.65,
+  },
+});
+
+export default style;

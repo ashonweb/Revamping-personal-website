@@ -1,162 +1,135 @@
-
-const drawerWidth = 300;
+const drawerWidth = 280;
 
 const style = theme => ({
-
-  logo_links: {
-    // backgroundColor: `rgb(0,0,0)`,/* Fallback color */
-    backgroundColor: `rgba(0,0,0, 0)`, /* Black w/opacity/see-through */
-    fontWeight: "bold",
-    // border: "3px solid #f1f1f1",
-    position: "absolute",
-    top: "1%",
-    left: "0%",
-    zIndex: 1,
-    color: "white",
+  nav: {
+    position: 'fixed',
+    top: 0, left: 0, right: 0,
+    zIndex: 100,
     display: 'flex',
-    width: '100%',
-    padding:'0 30px',
-    [theme.breakpoints.down('sm')]: {
-      padding:'0px'
-    }
-  },
-  logosection: {
-    flexBasis: '25%',
-    display: "inherit",
-    // justifyContent: "center",
     alignItems: 'center',
-    [theme.breakpoints.down('sm')]: {
-      padding:'0px 10px'
-    }
-
+    justifyContent: 'space-between',
+    padding: '0 72px',
+    height: 64,
+    transition: 'background 0.3s, border-color 0.3s, box-shadow 0.3s',
+    background: 'transparent',
+    borderBottom: '1px solid transparent',
+    [theme.breakpoints.down('md')]: { padding: '0 24px' },
   },
-  linksection: {
-    display: "inherit",
-    justifyContent: "center",
-    alignItems: 'center',
-    flexBasis: '75%',
-    [theme.breakpoints.down('sm')]: {
-      justifyContent: "flex-end",
-      padding:'0px 10px',
-    }
+  navScrolled: {
+    background: 'rgba(10,14,26,0.85)',
+    backdropFilter: 'blur(20px)',
+    WebkitBackdropFilter: 'blur(20px)',
+    borderBottomColor: 'rgba(255,255,255,0.07)',
+    boxShadow: '0 1px 32px rgba(0,0,0,0.3)',
   },
   logo: {
-    textAlign: 'center',
-    fontSize: '24px',
-    fontWeight: 900,
-    fontFamily: 'Nunito,sans-serif',
-    border: '2px solid white',
-    padding: '5px',
-    color: 'white',
-    textDecoration: 'none'
-
+    fontFamily: '"Fira Code", monospace',
+    fontSize: 20,
+    fontWeight: 700,
+    color: '#f1f5f9',
+    textDecoration: 'none',
+    letterSpacing: '-0.5px',
+    '& span': { color: '#4f8ef7' },
+    '&:hover': { color: '#f1f5f9' },
   },
-  logofixed: {
-    textAlign: 'center',
-    fontSize: '24px',
-    fontWeight: 900,
-    fontFamily: 'Nunito,sans-serif',
-    border: '2px solid black',
-    padding: '5px',
-    color: 'black',
-    textDecoration: 'none'
-
+  navRight: {
+    display: 'flex',
+    alignItems: 'center',
+    gap: 8,
   },
-  
   desktop: {
-    display: 'block',
-    [theme.breakpoints.down('sm')]: {
-      display: 'none !important',
-    },
+    display: 'flex',
+    alignItems: 'center',
+    gap: 4,
+    [theme.breakpoints.down('md')]: { display: 'none' },
+  },
+  navLink: {
+    padding: '8px 16px',
+    fontSize: 13,
+    fontWeight: 500,
+    color: '#4b5977',
+    textDecoration: 'none',
+    borderRadius: 6,
+    transition: 'color 0.2s, background 0.2s',
+    letterSpacing: '0.02em',
+    '&:hover': { color: '#f1f5f9', background: 'rgba(255,255,255,0.04)' },
+  },
+  navLinkActive: {
+    color: '#f1f5f9 !important',
+  },
+  navCta: {
+    marginLeft: 8,
+    padding: '8px 20px',
+    fontSize: 13,
+    fontWeight: 600,
+    color: '#4f8ef7',
+    textDecoration: 'none',
+    border: '1px solid #4f8ef7',
+    borderRadius: 6,
+    transition: 'background 0.2s, color 0.2s',
+    '&:hover': { background: '#4f8ef7', color: '#0a0e1a' },
   },
   mobile: {
     display: 'none',
-    [theme.breakpoints.down('sm')]: {
-      display: 'block !important',
-      
-    },
-
+    [theme.breakpoints.down('md')]: { display: 'block' },
   },
- 
-  links: {
-    textAlign: 'center',
-    fontSize: '14px',
-    fontWeight: 900,
-    fontFamily: 'Nunito,sans-serif',
-    padding: '0 45px',
-    color: 'rgba(255, 255, 255, 0.5)',
-    textDecoration: 'none',
-    '&:hover': {
-      color: 'white'
-    },
-
-
+  menuBtn: {
+    color: '#f1f5f9',
+    '& svg': { fontSize: 28 },
   },
-  linksfixed: {
-    textAlign: 'center',
-    fontSize: '14px',
-    fontWeight: 900,
-    fontFamily: 'Nunito,sans-serif',
-    padding: '0 45px',
-    color: 'black',
-    textDecoration: 'none',
-    '&:hover': {
-      color: '#96bb7c'
-
-    },
-
-  },
-  mobilelinks: {
-    textAlign: 'center',
-    fontSize: '14px',
-    fontWeight: 900,
-    fontFamily: 'Nunito,sans-serif',
-    padding: '5px 20px',
-    color: '#000000',
-    textDecoration: 'none',
-    '&:hover': {
-      color: '#96bb7c'
-    },
-
-  },
-  iconbutton: {
-    marginRight: '0px',
-    color:'white'
-  },
-  iconbutton_color:{
-    color:'black'
-  },
-  menuiconbutton: {
-    fontSize: '45px',
-  },
-
-  active: {
-    color: 'white'
-  },
-  activefixed: {
-    color: '#96bb7c'
-  },
-  mobileactive: {
-    color: '#000000'
-  },
-
-
   drawer: {
     width: drawerWidth,
-    flexShrink: 0,
-
   },
   drawerPaper: {
     width: drawerWidth,
+    backgroundColor: '#0f1626',
+    borderLeft: '1px solid rgba(255,255,255,0.07)',
+    padding: '24px 0',
   },
   drawerHeader: {
     display: 'flex',
     alignItems: 'center',
-    padding: theme.spacing(0, 1),
-    // necessary for content to be below app bar
-    ...theme.mixins.toolbar,
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between',
+    padding: '0 20px 20px',
+    borderBottom: '1px solid rgba(255,255,255,0.07)',
+    marginBottom: 16,
   },
+  drawerLogo: {
+    fontFamily: '"Fira Code", monospace',
+    fontSize: 18,
+    fontWeight: 700,
+    color: '#f1f5f9',
+    textDecoration: 'none',
+    '& span': { color: '#4f8ef7' },
+  },
+  drawerCloseBtn: {
+    color: '#4b5977',
+    '&:hover': { color: '#f1f5f9' },
+  },
+  mobileLink: {
+    display: 'block',
+    padding: '14px 24px',
+    fontSize: 15,
+    fontWeight: 500,
+    color: '#cbd5e1',
+    textDecoration: 'none',
+    transition: 'color 0.2s, padding-left 0.2s',
+    '&:hover': { color: '#4f8ef7', paddingLeft: 32 },
+  },
+  mobileCta: {
+    display: 'block',
+    margin: '16px 24px 0',
+    padding: '12px 20px',
+    fontSize: 14,
+    fontWeight: 600,
+    color: '#4f8ef7',
+    textDecoration: 'none',
+    border: '1px solid #4f8ef7',
+    borderRadius: 8,
+    textAlign: 'center',
+    transition: 'background 0.2s, color 0.2s',
+    '&:hover': { background: '#4f8ef7', color: '#0a0e1a' },
+  },
+});
 
-})
-export default style
+export default style;

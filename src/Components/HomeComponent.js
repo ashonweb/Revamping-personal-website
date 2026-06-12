@@ -81,20 +81,6 @@ const HomeComponent = () => {
           <div className={classes.photoOverlay} />
           <div className={classes.photoBorder} />
         </div>
-        <div className={classes.statsGrid}>
-          <div className={classes.statBox}>
-            <div className={classes.statNum}>8<span>+</span></div>
-            <div className={classes.statLabel}>Years exp.</div>
-          </div>
-          <div className={classes.statBox}>
-            <div className={classes.statNum}>10<span>+</span></div>
-            <div className={classes.statLabel}>Personal projects</div>
-          </div>
-          <div className={classes.statBox}>
-            <div className={classes.statNum}>3</div>
-            <div className={classes.statLabel}>Companies</div>
-          </div>
-        </div>
       </div>
     </section>
   );

@@ -10,6 +10,7 @@ import drums from '../Assests/drums.jpeg';
 import diamond from '../Assests/diamond.jpeg';
 import face from '../Assests/face.jpeg';
 import calc from '../Assests/calc.jpeg';
+import moodspace from '../Assests/moodspace.jpeg';
 
 const useStyles = makeStyles()(ProjectsStyle);
 
@@ -30,11 +31,11 @@ const GitHubIcon = () => (
 const PROJECTS = [
   {
     title: 'MoodSpace',
-    desc: 'Discover adventures and experiences that match your mood and personality. A full-featured React app with dynamic filtering and personalized recommendations.',
+    desc: 'A mood-based adventure finder for Karnataka. Discover curated experiences — from temple trails to beach escapes — filtered by how you\'re feeling today.',
     tags: ['React', 'Node.js', 'MongoDB'],
     live: 'https://mood-space-seven.vercel.app',
     github: 'https://github.com/ashonweb/MoodSpace',
-    image: null,
+    image: moodspace,
     emoji: '🎭',
     featured: true,
   },
@@ -145,9 +146,15 @@ const Projects = () => {
       <div className={classes.grid}>
         {/* Featured card */}
         <div className={`${classes.card} ${classes.cardFeatured}`}>
-          <div className={classes.cardImgPlaceholder}>
-            {featured.emoji}
-          </div>
+          {featured.image ? (
+            <div className={classes.cardImgWrap}>
+              <img src={featured.image} alt={featured.title} />
+            </div>
+          ) : (
+            <div className={classes.cardImgPlaceholder}>
+              {featured.emoji}
+            </div>
+          )}
           <div className={`${classes.cardBody} ${classes.cardBodyFeatured}`}>
             <div className={classes.cardTags}>
               {featured.tags.map(t => <span key={t} className={classes.cardTag}>{t}</span>)}

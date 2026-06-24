@@ -87,6 +87,22 @@ const style = theme => ({
     minHeight: 240,
     [theme.breakpoints.down('md')]: { height: 200, minHeight: 'unset' },
   },
+  cardImgWrap: {
+    position: 'relative',
+    overflow: 'hidden',
+    minHeight: 240,
+    '& img': {
+      position: 'absolute',
+      inset: 0,
+      width: '100%',
+      height: '100%',
+      objectFit: 'cover',
+      objectPosition: 'left center',
+      filter: 'brightness(0.8) saturate(0.8)',
+      transition: 'filter 0.35s',
+    },
+    [theme.breakpoints.down('md')]: { minHeight: 200 },
+  },
 
   /* gradient placeholder for projects without images */
   cardImgPlaceholder: {

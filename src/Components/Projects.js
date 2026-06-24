@@ -31,7 +31,7 @@ const GitHubIcon = () => (
 const PROJECTS = [
   {
     title: 'MoodSpace',
-    desc: 'Discover adventures and experiences that match your mood and personality. A full-featured React app with dynamic filtering and personalized recommendations.',
+    desc: 'A mood-based adventure finder for Karnataka. Discover curated experiences — from temple trails to beach escapes — filtered by how you\'re feeling today.',
     tags: ['React', 'Node.js', 'MongoDB'],
     live: 'https://mood-space-seven.vercel.app',
     github: 'https://github.com/ashonweb/MoodSpace',

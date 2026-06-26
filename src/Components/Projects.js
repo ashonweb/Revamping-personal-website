@@ -97,9 +97,9 @@ const PROJECTS = [
   },
   {
     title: 'Diamond Search',
-    desc: 'Search diamonds hidden in an 8×8 grid — a logic game with clean UI and state management.',
-    tags: ['React', 'Game logic'],
-    live: 'https://diamond-game.surge.sh/',
+    desc: 'Find hidden diamonds in a grid — hot/cold hints, direction arrows, daily challenge, sound, and challenge links to compete with friends.',
+    tags: ['React', 'Game', 'Web Audio'],
+    live: 'https://diamond-search-game.vercel.app/',
     github: 'https://github.com/ashonweb/Diamond-search-game',
     image: diamond,
   },

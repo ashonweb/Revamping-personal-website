@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design 4 — Bold Typographic</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:      #f2ede8;
+      --ink:     #111111;
+      --muted:   #888;
+      --border:  #d4cfc9;
+      --accent:  #e84b2a;
+      --surface: #e8e3dd;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Space Grotesk', sans-serif;
+      background: var(--bg);
+      color: var(--ink);
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 60px; height: 60px;
+      background: var(--bg);
+      border-bottom: 1.5px solid var(--border);
+    }
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 15px; font-weight: 700;
+      color: var(--ink); letter-spacing: -0.5px;
+    }
+    .nav-links { display: flex; align-items: center; gap: 36px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: 13px; font-weight: 500;
+      color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.06em; transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--ink); }
+    .nav-btn {
+      padding: 8px 18px;
+      background: var(--ink); color: var(--bg);
+      border-radius: 4px; font-size: 12px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      text-decoration: none; transition: background 0.2s;
+    }
+    .nav-btn:hover { background: var(--accent); }
+
+    /* HERO */
+    #hero {
+      padding: 80px 60px;
+      min-height: calc(100vh - 60px);
+      display: flex; flex-direction: column; justify-content: space-between;
+      border-bottom: 1.5px solid var(--border);
+    }
+    .hero-top {
+      display: flex; justify-content: space-between; align-items: flex-start;
+    }
+    .hero-status {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .hero-status span {
+      display: inline-block; width: 8px; height: 8px;
+      border-radius: 50%; background: #22c55e; margin-right: 6px;
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .hero-year {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+    .hero-main {
+      flex: 1; display: flex; align-items: center;
+    }
+    .hero-name-big {
+      font-size: clamp(80px, 14vw, 180px);
+      font-weight: 700; color: var(--ink);
+      line-height: 0.9; letter-spacing: -6px;
+    }
+    .hero-name-big em {
+      font-style: normal; color: var(--accent);
+    }
+    .hero-bottom {
+      display: flex; justify-content: space-between;
+      align-items: flex-end; padding-top: 48px;
+    }
+    .hero-desc {
+      font-size: 16px; color: var(--muted);
+      max-width: 420px; line-height: 1.8;
+    }
+    .hero-actions { display: flex; gap: 12px; }
+    .btn-filled {
+      padding: 14px 28px;
+      background: var(--ink); color: var(--bg);
+      border: 1.5px solid var(--ink);
+      border-radius: 4px; font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      cursor: pointer; transition: background 0.2s, color 0.2s;
+    }
+    .btn-filled:hover { background: var(--accent); border-color: var(--accent); }
+    .btn-empty {
+      padding: 14px 28px;
+      background: transparent; color: var(--ink);
+      border: 1.5px solid var(--border);
+      border-radius: 4px; font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.04em;
+      cursor: pointer; transition: border-color 0.2s;
+    }
+    .btn-empty:hover { border-color: var(--ink); }
+
+    /* SECTION */
+    section { border-bottom: 1.5px solid var(--border); }
+    .sec-inner { padding: 80px 60px; max-width: 1300px; margin: 0 auto; }
+    .sec-header {
+      display: flex; justify-content: space-between; align-items: baseline;
+      margin-bottom: 56px;
+      padding-bottom: 20px; border-bottom: 1.5px solid var(--border);
+    }
+    .sec-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.1em;
+    }
+    .sec-title {
+      font-size: clamp(36px, 5vw, 64px);
+      font-weight: 700; letter-spacing: -2px;
+      line-height: 1.0;
+    }
+
+    /* ABOUT */
+    .about-grid {
+      display: grid; grid-template-columns: 1fr 1fr 1fr;
+      gap: 0;
+    }
+    .about-col {
+      padding: 0 40px 0 0;
+      border-right: 1.5px solid var(--border);
+      margin-right: 40px;
+    }
+    .about-col:last-child { border-right: none; margin-right: 0; padding-right: 0; }
+    .about-col h4 {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--muted);
+      margin-bottom: 16px;
+    }
+    .about-col p { font-size: 15px; color: var(--muted); line-height: 1.8; }
+    .chips { display: flex; flex-direction: column; gap: 8px; }
+    .chip {
+      padding: 8px 0;
+      font-size: 14px; font-weight: 600; color: var(--ink);
+      border-bottom: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .chip::after { content: '→'; color: var(--muted); font-size: 12px; }
+
+    /* PROJECTS */
+    .proj-list {}
+    .proj-row {
+      display: grid;
+      grid-template-columns: 60px 1fr 200px 200px 80px;
+      gap: 24px; align-items: center;
+      padding: 24px 0;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+    .proj-row:first-child { border-top: 1px solid var(--border); }
+    .proj-row:hover { background: var(--surface); margin: 0 -60px; padding: 24px 60px; }
+    .proj-num {
+      font-family: 'Space Mono', monospace;
+      font-size: 12px; color: var(--muted);
+    }
+    .proj-title-row { font-size: 18px; font-weight: 700; }
+    .proj-desc-row { font-size: 13px; color: var(--muted); }
+    .proj-tags-row { display: flex; gap: 6px; flex-wrap: wrap; }
+    .proj-tag-row {
+      padding: 3px 8px; background: var(--surface);
+      border-radius: 2px; font-size: 11px; font-weight: 600;
+      text-transform: uppercase; letter-spacing: 0.05em; color: var(--muted);
+    }
+    .proj-row:hover .proj-tag-row { background: var(--border); }
+    .proj-arrow { font-size: 20px; color: var(--muted); text-align: right; }
+    .proj-row:hover .proj-arrow { color: var(--accent); }
+
+    /* EXPERIENCE */
+    .exp-grid {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 0;
+    }
+    .exp-col { padding-right: 60px; border-right: 1.5px solid var(--border); }
+    .exp-col:last-child { padding-right: 0; padding-left: 60px; border-right: none; }
+    .exp-col h3 {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--muted);
+      margin-bottom: 32px;
+    }
+    .exp-item { margin-bottom: 36px; }
+    .exp-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; color: var(--accent);
+      text-transform: uppercase; letter-spacing: 0.06em;
+      margin-bottom: 6px;
+    }
+    .exp-role { font-size: 17px; font-weight: 700; margin-bottom: 2px; }
+    .exp-org { font-size: 14px; color: var(--muted); margin-bottom: 8px; }
+    .exp-desc { font-size: 13px; color: var(--muted); line-height: 1.7; }
+
+    /* CONTACT */
+    #contact .sec-inner { text-align: center; }
+    .contact-big {
+      font-size: clamp(40px, 7vw, 96px);
+      font-weight: 700; letter-spacing: -3px;
+      line-height: 1.0; margin-bottom: 40px;
+    }
+    .contact-big a { color: var(--ink); text-decoration: none; transition: color 0.2s; }
+    .contact-big a:hover { color: var(--accent); }
+    .contact-sub { font-size: 16px; color: var(--muted); margin-bottom: 40px; }
+    .socials { display: flex; justify-content: center; gap: 24px; }
+    .soc {
+      font-size: 13px; font-weight: 700;
+      text-transform: uppercase; letter-spacing: 0.05em;
+      color: var(--muted); text-decoration: none;
+      transition: color 0.2s;
+    }
+    .soc:hover { color: var(--ink); }
+
+    /* FOOTER */
+    footer {
+      padding: 20px 60px;
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px; color: var(--muted);
+      text-transform: uppercase; letter-spacing: 0.08em;
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">AM_</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#resume">Resume</a></li>
+    <li><a href="#contact" class="nav-btn">Contact</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-top">
+    <div class="hero-status"><span></span> Available for work · Frontend Engineer</div>
+    <div class="hero-year">© 2024</div>
+  </div>
+  <div class="hero-main">
+    <h1 class="hero-name-big">Aashim<br/><em>Meghpal</em></h1>
+  </div>
+  <div class="hero-bottom">
+    <p class="hero-desc">
+      Frontend engineer with 5+ years building fast, accessible web applications.
+      React specialist. Previously at Dell &amp; TCS.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-filled">View my work</button>
+      <button class="btn-empty">Download CV</button>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="sec-inner">
+    <div class="sec-header">
+      <span class="sec-num">01 — About</span>
+      <h2 class="sec-title">Who I am</h2>
+    </div>
+    <div class="about-grid">
+      <div class="about-col">
+        <h4>Background</h4>
+        <p>Frontend engineer who cares about performance, accessibility, and the details that separate good from great. I write code for humans, not just machines.</p>
+      </div>
+      <div class="about-col">
+        <h4>Experience</h4>
+        <p>5+ years across Dell Technologies and TCS. I've shipped enterprise dashboards, full-stack banking apps, and everything in between.</p>
+      </div>
+      <div class="about-col" style="border:none;margin:0;padding:0">
+        <h4>Skills</h4>
+        <div class="chips">
+          <div class="chip">React</div>
+          <div class="chip">TypeScript</div>
+          <div class="chip">Node.js</div>
+          <div class="chip">MongoDB</div>
+          <div class="chip">MUI</div>
+          <div class="chip">REST APIs</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="sec-inner">
+    <div class="sec-header">
+      <span class="sec-num">02 — Work</span>
+      <h2 class="sec-title">Selected projects</h2>
+    </div>
+    <div class="proj-list">
+
+      <div class="proj-row">
+        <div class="proj-num">01</div>
+        <div class="proj-title-row">SpaceX Launch Tracker</div>
+        <div class="proj-desc-row">Real-time launch data and filtering</div>
+        <div class="proj-tags-row"><span class="proj-tag-row">React</span><span class="proj-tag-row">API</span></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-num">02</div>
+        <div class="proj-title-row">Face Detection App</div>
+        <div class="proj-desc-row">AI face detection with Clarifai</div>
+        <div class="proj-tags-row"><span class="proj-tag-row">React</span><span class="proj-tag-row">Node</span><span class="proj-tag-row">AI</span></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-num">03</div>
+        <div class="proj-title-row">Finding Falcon</div>
+        <div class="proj-desc-row">Strategy game across planets</div>
+        <div class="proj-tags-row"><span class="proj-tag-row">React</span><span class="proj-tag-row">API</span></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-num">04</div>
+        <div class="proj-title-row">Game of Thrones Wiki</div>
+        <div class="proj-desc-row">Character encyclopedia + search</div>
+        <div class="proj-tags-row"><span class="proj-tag-row">React</span><span class="proj-tag-row">Redux</span></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-num">05</div>
+        <div class="proj-title-row">Drum Machine</div>
+        <div class="proj-desc-row">Interactive drum pad with keyboard</div>
+        <div class="proj-tags-row"><span class="proj-tag-row">React</span><span class="proj-tag-row">Audio</span></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+
+      <div class="proj-row">
+        <div class="proj-num">06</div>
+        <div class="proj-title-row">Diamond Search</div>
+        <div class="proj-desc-row">Advanced e-commerce filtering UI</div>
+        <div class="proj-tags-row"><span class="proj-tag-row">React</span><span class="proj-tag-row">Filters</span></div>
+        <div class="proj-arrow">↗</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="sec-inner">
+    <div class="sec-header">
+      <span class="sec-num">03 — Resume</span>
+      <h2 class="sec-title">Experience</h2>
+    </div>
+    <div class="exp-grid">
+      <div class="exp-col">
+        <h3>Work</h3>
+        <div class="exp-item">
+          <div class="exp-date">2021 — Present</div>
+          <div class="exp-role">Frontend Engineer</div>
+          <div class="exp-org">Dell Technologies</div>
+          <p class="exp-desc">Led React migration for enterprise dashboards. Built shared component library. 40% performance improvement through code splitting.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date">2019 — 2021</div>
+          <div class="exp-role">Software Developer</div>
+          <div class="exp-org">Tata Consultancy Services</div>
+          <p class="exp-desc">Full-stack banking features with React, Node.js, Oracle DB. Agile team, bi-weekly production releases.</p>
+        </div>
+      </div>
+      <div class="exp-col">
+        <h3>Education</h3>
+        <div class="exp-item">
+          <div class="exp-date">2015 — 2019</div>
+          <div class="exp-role">B.E. Computer Science</div>
+          <div class="exp-org">SJCE, Mysore</div>
+          <p class="exp-desc">Distinction. Final year ML project — 94% accuracy on image classification benchmark.</p>
+        </div>
+        <div class="exp-item">
+          <div class="exp-date">2013 — 2015</div>
+          <div class="exp-role">Pre-University (Science)</div>
+          <div class="exp-org">St. Aloysius College, Mangalore</div>
+          <p class="exp-desc">Mathematics and Physics stream.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="sec-inner">
+    <div class="sec-header">
+      <span class="sec-num">04 — Contact</span>
+      <h2 class="sec-title">Say hello</h2>
+    </div>
+    <p class="contact-sub">Open to full-time roles and interesting projects.</p>
+    <div class="contact-big">
+      <a href="mailto:meghpalbhagya@gmail.com">meghpalbhagya<br/>@gmail.com</a>
+    </div>
+    <div class="socials">
+      <a class="soc" href="#">GitHub</a>
+      <a class="soc" href="#">LinkedIn</a>
+      <a class="soc" href="#">Twitter</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">Aashim Meghpal · 2024</span>
+  <span class="footer-copy">Built with React · MUI</span>
+</footer>
+
+</body>
+</html>

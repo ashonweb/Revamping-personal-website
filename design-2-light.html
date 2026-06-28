@@ -1,0 +1,495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design 2 — Light Editorial</title>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Lora:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #ffffff;
+      --surface:  #f8fafc;
+      --border:   #e2e8f0;
+      --text:     #334155;
+      --heading:  #0f172a;
+      --muted:    #94a3b8;
+      --accent:   #6366f1;
+      --accent-l: #eef2ff;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* NAV */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 72px;
+      height: 68px;
+      background: rgba(255,255,255,0.92);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo {
+      font-size: 18px; font-weight: 800;
+      color: var(--heading); letter-spacing: -0.5px;
+    }
+    .nav-logo em { font-style: normal; color: var(--accent); }
+    .nav-links { display: flex; align-items: center; gap: 40px; list-style: none; }
+    .nav-links a {
+      text-decoration: none; font-size: 14px; font-weight: 500;
+      color: var(--muted); transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--heading); }
+    .nav-btn {
+      padding: 9px 22px;
+      background: var(--accent); color: #fff;
+      border-radius: 8px; font-size: 13px; font-weight: 600;
+      text-decoration: none;
+    }
+
+    /* HERO */
+    #hero {
+      padding: 80px 72px 100px;
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 380px;
+      gap: 80px;
+      align-items: center;
+      min-height: calc(100vh - 68px);
+    }
+    .hero-left {}
+    .hero-tag {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 6px 14px;
+      background: var(--accent-l); color: var(--accent);
+      border-radius: 100px; font-size: 12px; font-weight: 600;
+      letter-spacing: 0.03em; text-transform: uppercase;
+      margin-bottom: 28px;
+    }
+    .hero-tag span {
+      width: 6px; height: 6px; border-radius: 50%;
+      background: var(--accent);
+    }
+    .hero-name {
+      font-size: clamp(52px, 7vw, 80px);
+      font-weight: 800;
+      color: var(--heading);
+      line-height: 1.0;
+      letter-spacing: -3px;
+      margin-bottom: 8px;
+    }
+    .hero-name-sub {
+      font-family: 'Lora', serif;
+      font-size: clamp(22px, 3vw, 32px);
+      font-weight: 400;
+      font-style: italic;
+      color: var(--accent);
+      margin-bottom: 28px;
+    }
+    .hero-desc {
+      font-size: 17px; color: var(--text);
+      max-width: 540px; line-height: 1.8;
+      margin-bottom: 40px;
+    }
+    .hero-actions { display: flex; gap: 14px; }
+    .btn-solid {
+      padding: 13px 28px;
+      background: var(--heading); color: #fff;
+      border-radius: 8px; font-size: 14px; font-weight: 600;
+      cursor: pointer; border: none; transition: background 0.2s;
+    }
+    .btn-solid:hover { background: var(--accent); }
+    .btn-outline {
+      padding: 13px 28px;
+      background: transparent; color: var(--heading);
+      border: 1.5px solid var(--border);
+      border-radius: 8px; font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: border-color 0.2s;
+    }
+    .btn-outline:hover { border-color: var(--heading); }
+    .hero-stats {
+      display: flex; gap: 40px; margin-top: 56px;
+      padding-top: 32px; border-top: 1px solid var(--border);
+    }
+    .stat-num {
+      font-size: 28px; font-weight: 800;
+      color: var(--heading); line-height: 1;
+    }
+    .stat-label { font-size: 13px; color: var(--muted); margin-top: 4px; }
+    .hero-right {
+      position: relative;
+    }
+    .hero-photo {
+      width: 100%; border-radius: 20px;
+      display: block;
+    }
+    .hero-photo-card {
+      position: absolute; bottom: -20px; left: -20px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 12px; padding: 16px 20px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.08);
+    }
+    .card-label { font-size: 11px; color: var(--muted); text-transform: uppercase; letter-spacing: 0.05em; }
+    .card-value { font-size: 15px; font-weight: 700; color: var(--heading); margin-top: 2px; }
+    .card-dot { width: 8px; height: 8px; border-radius: 50%; background: #22c55e; display: inline-block; margin-right: 6px; }
+
+    /* ABOUT */
+    #about { background: var(--surface); padding: 100px 72px; }
+    .about-wrap { max-width: 1200px; margin: 0 auto; }
+    .section-eyebrow {
+      display: flex; align-items: center; gap: 12px;
+      font-size: 12px; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.1em; color: var(--accent);
+      margin-bottom: 16px;
+    }
+    .section-eyebrow::before {
+      content: ''; width: 32px; height: 2px; background: var(--accent);
+    }
+    .section-title {
+      font-size: clamp(32px, 4vw, 48px);
+      font-weight: 800; color: var(--heading);
+      letter-spacing: -1.5px; margin-bottom: 48px; line-height: 1.1;
+    }
+    .about-cols {
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 60px;
+    }
+    .about-col p {
+      font-size: 16px; color: var(--text);
+      line-height: 1.8; margin-bottom: 20px;
+    }
+    .chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 24px; }
+    .chip {
+      padding: 6px 14px;
+      background: var(--bg); border: 1px solid var(--border);
+      border-radius: 6px; font-size: 13px; font-weight: 500;
+      color: var(--heading);
+    }
+    .chip:hover { border-color: var(--accent); color: var(--accent); }
+
+    /* PROJECTS */
+    #projects { padding: 100px 72px; }
+    .projects-wrap { max-width: 1200px; margin: 0 auto; }
+    .proj-grid {
+      display: grid; grid-template-columns: repeat(2, 1fr);
+      gap: 2px; margin-top: 48px;
+      border: 1px solid var(--border); border-radius: 16px; overflow: hidden;
+    }
+    .proj-card {
+      padding: 36px 40px;
+      border-right: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+      background: var(--bg);
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .proj-card:nth-child(even) { border-right: none; }
+    .proj-card:nth-last-child(-n+2) { border-bottom: none; }
+    .proj-card:hover { background: var(--accent-l); }
+    .proj-num {
+      font-size: 11px; font-weight: 700;
+      color: var(--muted); letter-spacing: 0.1em;
+      text-transform: uppercase; margin-bottom: 16px;
+    }
+    .proj-title {
+      font-size: 20px; font-weight: 700;
+      color: var(--heading); margin-bottom: 10px;
+    }
+    .proj-desc {
+      font-size: 14px; color: var(--text); line-height: 1.7;
+      margin-bottom: 20px;
+    }
+    .proj-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+    .proj-tag {
+      padding: 3px 10px; border-radius: 4px;
+      background: var(--surface); font-size: 12px;
+      color: var(--muted); font-weight: 500;
+    }
+    .proj-card:hover .proj-tag { background: var(--bg); }
+    .proj-arrow {
+      float: right; font-size: 20px; color: var(--muted);
+      transition: transform 0.2s, color 0.2s;
+    }
+    .proj-card:hover .proj-arrow { transform: translate(3px,-3px); color: var(--accent); }
+
+    /* EXPERIENCE */
+    #resume { background: var(--surface); padding: 100px 72px; }
+    .resume-wrap { max-width: 1200px; margin: 0 auto; }
+    .exp-list { margin-top: 48px; }
+    .exp-item {
+      display: grid; grid-template-columns: 200px 1fr;
+      gap: 40px; padding: 36px 0;
+      border-bottom: 1px solid var(--border);
+    }
+    .exp-item:last-child { border-bottom: none; }
+    .exp-date { font-size: 13px; color: var(--muted); font-weight: 500; padding-top: 3px; }
+    .exp-role { font-size: 18px; font-weight: 700; color: var(--heading); margin-bottom: 4px; }
+    .exp-company { font-size: 15px; color: var(--accent); font-weight: 600; margin-bottom: 10px; }
+    .exp-desc { font-size: 14px; color: var(--text); line-height: 1.7; }
+
+    /* CONTACT */
+    #contact { padding: 100px 72px; }
+    .contact-wrap {
+      max-width: 1200px; margin: 0 auto;
+      display: grid; grid-template-columns: 1fr 1fr;
+      gap: 80px; align-items: start;
+    }
+    .contact-left .section-title { margin-bottom: 20px; }
+    .contact-left p { font-size: 16px; color: var(--text); line-height: 1.8; margin-bottom: 32px; }
+    .contact-email {
+      display: block; font-size: 20px; font-weight: 700;
+      color: var(--heading); text-decoration: none;
+      margin-bottom: 24px;
+      transition: color 0.2s;
+    }
+    .contact-email:hover { color: var(--accent); }
+    .socials { display: flex; gap: 12px; }
+    .social-btn {
+      padding: 10px 18px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-size: 13px; font-weight: 600; color: var(--heading);
+      text-decoration: none; transition: all 0.2s;
+    }
+    .social-btn:hover { border-color: var(--accent); color: var(--accent); }
+    .contact-form { display: flex; flex-direction: column; gap: 16px; }
+    .form-field {
+      display: flex; flex-direction: column; gap: 6px;
+    }
+    .form-field label { font-size: 13px; font-weight: 600; color: var(--heading); }
+    .form-field input, .form-field textarea {
+      padding: 12px 16px;
+      border: 1.5px solid var(--border); border-radius: 8px;
+      font-family: inherit; font-size: 14px; color: var(--heading);
+      background: var(--bg);
+      outline: none; transition: border-color 0.2s;
+    }
+    .form-field input:focus, .form-field textarea:focus { border-color: var(--accent); }
+    .form-field textarea { resize: vertical; min-height: 120px; }
+    .form-submit {
+      padding: 13px;
+      background: var(--accent); color: #fff;
+      border: none; border-radius: 8px;
+      font-size: 14px; font-weight: 600;
+      cursor: pointer; transition: opacity 0.2s;
+    }
+    .form-submit:hover { opacity: 0.85; }
+
+    /* FOOTER */
+    footer {
+      padding: 24px 72px;
+      border-top: 1px solid var(--border);
+      display: flex; justify-content: space-between; align-items: center;
+    }
+    .footer-copy { font-size: 13px; color: var(--muted); }
+    .footer-made { font-size: 13px; color: var(--muted); }
+    .footer-made span { color: var(--accent); font-weight: 600; }
+  </style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-logo">aashim<em>.</em>dev</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#resume">Experience</a></li>
+    <li><a href="#contact" class="nav-btn">Say Hello</a></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="hero-left">
+    <div class="hero-tag"><span></span> Open to work</div>
+    <h1 class="hero-name">Aashim<br/>Meghpal</h1>
+    <p class="hero-name-sub">Frontend Engineer</p>
+    <p class="hero-desc">
+      I craft clean, performant web applications with a strong focus on
+      user experience. 5+ years building products at Dell Technologies and TCS.
+    </p>
+    <div class="hero-actions">
+      <button class="btn-solid">View Projects</button>
+      <button class="btn-outline">Download CV</button>
+    </div>
+    <div class="hero-stats">
+      <div>
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years experience</div>
+      </div>
+      <div>
+        <div class="stat-num">9+</div>
+        <div class="stat-label">Projects shipped</div>
+      </div>
+      <div>
+        <div class="stat-num">2</div>
+        <div class="stat-label">Companies</div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img class="hero-photo" src="src/Assests/dp.jpg" alt="Aashim" />
+    <div class="hero-photo-card">
+      <div class="card-label">Status</div>
+      <div class="card-value"><span class="card-dot"></span>Available for hire</div>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="about-wrap">
+    <div class="section-eyebrow">About</div>
+    <h2 class="section-title">A bit about me</h2>
+    <div class="about-cols">
+      <div class="about-col">
+        <p>I'm a Frontend Engineer who loves the intersection of great engineering and great design. I specialize in React, but I'm comfortable across the full stack when the project calls for it.</p>
+        <p>Previously at <strong>Dell Technologies</strong>, where I worked on enterprise-scale dashboards used daily by thousands of users. Before that, at <strong>TCS</strong> building full-stack banking applications.</p>
+      </div>
+      <div class="about-col">
+        <p>I care deeply about performance, accessibility, and the details that separate a good product from a great one. I write code that's meant to be read by humans, not just machines.</p>
+        <div class="chips">
+          <span class="chip">React</span>
+          <span class="chip">TypeScript</span>
+          <span class="chip">Node.js</span>
+          <span class="chip">MongoDB</span>
+          <span class="chip">Express</span>
+          <span class="chip">MUI</span>
+          <span class="chip">REST APIs</span>
+          <span class="chip">Git</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="projects-wrap">
+    <div class="section-eyebrow">Projects</div>
+    <h2 class="section-title">Selected work</h2>
+    <div class="proj-grid">
+
+      <div class="proj-card">
+        <div class="proj-num">01</div>
+        <div class="proj-title">SpaceX Launch Tracker <span class="proj-arrow">↗</span></div>
+        <p class="proj-desc">Real-time SpaceX launch data with filtering, countdown timers, and detailed mission pages.</p>
+        <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">REST API</span><span class="proj-tag">Redux</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">02</div>
+        <div class="proj-title">Face Detection App <span class="proj-arrow">↗</span></div>
+        <p class="proj-desc">AI-powered face detection using Clarifai API with user authentication and history tracking.</p>
+        <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Node.js</span><span class="proj-tag">AI API</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">03</div>
+        <div class="proj-title">Finding Falcon <span class="proj-arrow">↗</span></div>
+        <p class="proj-desc">Strategy game with optimal search algorithm across planets and vehicles.</p>
+        <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">API</span><span class="proj-tag">Game logic</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">04</div>
+        <div class="proj-title">Game of Thrones Wiki <span class="proj-arrow">↗</span></div>
+        <p class="proj-desc">Character encyclopedia with search, filtering, and rich character detail pages.</p>
+        <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Redux</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">05</div>
+        <div class="proj-title">Drum Machine <span class="proj-arrow">↗</span></div>
+        <p class="proj-desc">Interactive drum pad with keyboard support, multiple sound banks, and volume control.</p>
+        <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Web Audio</span></div>
+      </div>
+
+      <div class="proj-card">
+        <div class="proj-num">06</div>
+        <div class="proj-title">Diamond Search <span class="proj-arrow">↗</span></div>
+        <p class="proj-desc">Advanced product search and filtering UI for a diamond e-commerce platform.</p>
+        <div class="proj-tags"><span class="proj-tag">React</span><span class="proj-tag">Filters</span><span class="proj-tag">E-commerce</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<section id="resume">
+  <div class="resume-wrap">
+    <div class="section-eyebrow">Experience</div>
+    <h2 class="section-title">Where I've worked</h2>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-date">2021 — Present</div>
+        <div>
+          <div class="exp-role">Frontend Engineer</div>
+          <div class="exp-company">Dell Technologies</div>
+          <p class="exp-desc">Led migration from legacy Angular to React for enterprise dashboards. Built reusable component library adopted across 3 teams. Improved page load performance by 40% through code splitting and lazy loading.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">2019 — 2021</div>
+        <div>
+          <div class="exp-role">Software Developer</div>
+          <div class="exp-company">Tata Consultancy Services</div>
+          <p class="exp-desc">Developed full-stack banking features using React, Node.js, and Oracle DB. Worked in agile teams delivering bi-weekly releases to production.</p>
+        </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-date">2015 — 2019</div>
+        <div>
+          <div class="exp-role">B.E. in Computer Science</div>
+          <div class="exp-company">SJCE, Mysore</div>
+          <p class="exp-desc">Graduated with distinction. Final year project on ML-based image classification achieving 94% accuracy on test set.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="contact-wrap">
+    <div class="contact-left">
+      <div class="section-eyebrow">Contact</div>
+      <h2 class="section-title">Let's work<br/>together</h2>
+      <p>Open to full-time roles, freelance projects, and interesting conversations. I typically respond within 24 hours.</p>
+      <a href="mailto:meghpalbhagya@gmail.com" class="contact-email">meghpalbhagya@gmail.com</a>
+      <div class="socials">
+        <a href="#" class="social-btn">GitHub</a>
+        <a href="#" class="social-btn">LinkedIn</a>
+        <a href="#" class="social-btn">Twitter</a>
+      </div>
+    </div>
+    <div class="contact-form">
+      <div class="form-field">
+        <label>Name</label>
+        <input type="text" placeholder="Your name" />
+      </div>
+      <div class="form-field">
+        <label>Email</label>
+        <input type="email" placeholder="your@email.com" />
+      </div>
+      <div class="form-field">
+        <label>Message</label>
+        <textarea placeholder="What's on your mind?"></textarea>
+      </div>
+      <button class="form-submit">Send Message</button>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2024 Aashim Meghpal</span>
+  <span class="footer-made">Built with <span>React + MUI</span></span>
+</footer>
+
+</body>
+</html>

@@ -30,6 +30,15 @@ const GitHubIcon = () => (
 
 const PROJECTS = [
   {
+    title: 'TrackJobs',
+    desc: 'SaaS job application tracker with a dark Kanban board. Drag cards between Applied → Screening → Interview → Offer columns, search across applications, export to CSV. Built with Next.js, MongoDB, and NextAuth.',
+    tags: ['Next.js', 'MongoDB', 'SaaS'],
+    live: 'https://job-tracker-gamma-eight.vercel.app',
+    github: 'https://github.com/ashonweb/job-tracker',
+    emoji: '📋',
+    featured: false,
+  },
+  {
     title: 'MoodSpace',
     desc: 'A mood-based adventure finder for Karnataka. Discover curated experiences — from temple trails to beach escapes — filtered by how you\'re feeling today.',
     tags: ['React', 'Node.js', 'MongoDB'],
@@ -168,11 +177,11 @@ const Projects = () => {
         {/* Rest of projects */}
         {rest.map(project => (
           <div key={project.title} className={classes.card}>
-            <img
-              className={classes.cardImg}
-              src={project.image}
-              alt={project.title}
-            />
+            {project.image ? (
+              <img className={classes.cardImg} src={project.image} alt={project.title} />
+            ) : (
+              <div className={classes.cardImgPlaceholder}>{project.emoji}</div>
+            )}
             <div className={classes.cardBody}>
               <div className={classes.cardTags}>
                 {project.tags.map(t => <span key={t} className={classes.cardTag}>{t}</span>)}

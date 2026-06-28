@@ -11,6 +11,7 @@ import diamond from '../Assests/diamond.jpeg';
 import face from '../Assests/face.jpeg';
 import calc from '../Assests/calc.jpeg';
 import moodspace from '../Assests/moodspace.jpeg';
+import trackjobs from '../Assests/trackjobs.png';
 
 const useStyles = makeStyles()(ProjectsStyle);
 
@@ -35,8 +36,8 @@ const PROJECTS = [
     tags: ['Next.js', 'MongoDB', 'SaaS'],
     live: 'https://job-tracker-gamma-eight.vercel.app',
     github: 'https://github.com/ashonweb/job-tracker',
-    emoji: '📋',
-    featured: false,
+    image: trackjobs,
+    featured: true,
   },
   {
     title: 'MoodSpace',
@@ -46,7 +47,7 @@ const PROJECTS = [
     github: 'https://github.com/ashonweb/MoodSpace',
     image: moodspace,
     emoji: '🎭',
-    featured: true,
+    featured: false,
   },
   {
     title: 'Game of Thrones Wiki',
